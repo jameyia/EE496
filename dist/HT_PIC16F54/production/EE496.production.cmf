@@ -13,12 +13,12 @@
 %PSECTS
 $dist/HT_PIC16F54/production\EE496.production.obj
 cinit CODE 0 F F 4 2
-text1 CODE 0 1A 1A 1 2
-text2 CODE 0 1B 1B 1 2
-maintext CODE 0 13 13 7 2
+text1 CODE 0 13 13 28 2
+text2 CODE 0 45 45 8 2
+maintext CODE 0 3B 3B A 2
 cstackCOMMON COMMON 1 70 70 1 1
 intentry CODE 0 4 4 9 2
-$C:\Users\JAM\AppData\Local\Temp\s29g.obj
+$C:\Users\JAM\AppData\Local\Temp\scas.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 D D 2 2
 config CONFIG 0 8007 8007 2 2
@@ -52,9 +52,9 @@ BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
 CONST 2-3 2
-CONST 1C-1FFF 2
+CONST 4D-1FFF 2
 ENTRY 2-3 2
-ENTRY 1C-1FFF 2
+ENTRY 4D-1FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -80,7 +80,7 @@ SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 STACK 2000-23EF 1
 CODE 2-3 2
-CODE 1C-1FFF 2
+CODE 4D-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -98,9 +98,9 @@ BIGRAM 2000-23EF 1
 COMMON 71-7D 1
 EEDATA F000-F0FF 2
 STRCODE 2-3 2
-STRCODE 1C-1FFF 2
+STRCODE 4D-1FFF 2
 STRING 2-3 2
-STRING 1C-1FFF 2
+STRING 4D-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -115,22 +115,48 @@ STRING 1C-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/HT_PIC16F54/production\EE496.production.obj
-F cinit CODE >1555:C:\Users\JAM\AppData\Local\Temp\s29g.
-F cinit CODE >1558:C:\Users\JAM\AppData\Local\Temp\s29g.
-F cinit CODE >1564:C:\Users\JAM\AppData\Local\Temp\s29g.
-F cinit CODE >1566:C:\Users\JAM\AppData\Local\Temp\s29g.
-10 cinit CODE >1567:C:\Users\JAM\AppData\Local\Temp\s29g.
-11 cinit CODE >1568:C:\Users\JAM\AppData\Local\Temp\s29g.
+F cinit CODE >1599:C:\Users\JAM\AppData\Local\Temp\scas.
+F cinit CODE >1602:C:\Users\JAM\AppData\Local\Temp\scas.
+F cinit CODE >1608:C:\Users\JAM\AppData\Local\Temp\scas.
+F cinit CODE >1610:C:\Users\JAM\AppData\Local\Temp\scas.
+10 cinit CODE >1611:C:\Users\JAM\AppData\Local\Temp\scas.
+11 cinit CODE >1612:C:\Users\JAM\AppData\Local\Temp\scas.
 4 intentry CODE >23:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
 9 intentry CODE >50:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
-1B text2 CODE >18:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
-1B text2 CODE >25:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
-1A text1 CODE >22:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
-1A text1 CODE >31:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
-13 maintext CODE >26:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
-13 maintext CODE >29:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
-16 maintext CODE >32:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
-19 maintext CODE >35:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+45 text2 CODE >18:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
+45 text2 CODE >28:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
+4A text2 CODE >29:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
+4C text2 CODE >31:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
+13 text1 CODE >22:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+13 text1 CODE >27:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+15 text1 CODE >28:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+17 text1 CODE >29:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+19 text1 CODE >32:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+1B text1 CODE >33:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+1D text1 CODE >34:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+1F text1 CODE >36:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+21 text1 CODE >37:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+22 text1 CODE >39:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+24 text1 CODE >40:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+25 text1 CODE >43:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+27 text1 CODE >44:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+29 text1 CODE >46:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+2B text1 CODE >47:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+2D text1 CODE >49:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+2F text1 CODE >50:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+31 text1 CODE >51:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+32 text1 CODE >53:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+33 text1 CODE >55:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+34 text1 CODE >56:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+35 text1 CODE >58:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+37 text1 CODE >59:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+39 text1 CODE >68:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+3A text1 CODE >69:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
+3B maintext CODE >26:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+3B maintext CODE >29:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+3E maintext CODE >32:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+41 maintext CODE >35:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+44 maintext CODE >36:C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -155,28 +181,33 @@ ltemp1 82 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ltemp2 86 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ltemp3 80 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\JAM\AppData\Local\Temp\s29g.obj
-_main 26 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
+_LATA 10C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_LATC 10E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_WPUA 20C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_WPUC 20E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+___sp 0 0 STACK 2 stack C:\Users\JAM\AppData\Local\Temp\scas.obj
+_main 76 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
 btemp 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ltemp 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
-start 1A 0 CODE 0 init C:\Users\JAM\AppData\Local\Temp\s29g.obj
+start 1A 0 CODE 0 init C:\Users\JAM\AppData\Local\Temp\scas.obj
 ttemp 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 wtemp 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __size_of_main 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-__end_of_ConfigureOscillator 38 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
+__end_of_ConfigureOscillator 9A 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
 ttemp0 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ttemp1 81 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ttemp2 84 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ttemp3 87 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 ttemp4 7F 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-intlevel1 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-intlevel2 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-intlevel3 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-intlevel4 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-intlevel5 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\s29g.obj
-_InitApp 34 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
+intlevel0 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+intlevel1 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+intlevel2 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+intlevel3 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+intlevel4 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+intlevel5 0 0 CODE 0 functab C:\Users\JAM\AppData\Local\Temp\scas.obj
+_InitApp 26 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
+_OSCCONbits 99 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 wtemp0 7E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 wtemp1 80 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 wtemp2 82 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
@@ -186,10 +217,18 @@ wtemp5 88 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 wtemp6 7F 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
+_ANSELA 18C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_ANSELC 18E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_FVRCONbits 117 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_CM1CON0bits 111 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
 __CFG_FOSC$ECH 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_INLVLA 38C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_INLVLC 38E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 start_initialization 1E 0 CODE 0 cinit dist/HT_PIC16F54/production\EE496.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\JAM\AppData\Local\Temp\s29g.obj
+_SRCON0bits 11A 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_MDCONbits 39C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\JAM\AppData\Local\Temp\scas.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -286,6 +325,7 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
+_INTCONbits B 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hinit 1A 0 CODE 0 init -
@@ -325,7 +365,7 @@ __CFG_PLLEN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __end_of_isr 1A 0 CODE 0 intentry dist/HT_PIC16F54/production\EE496.production.obj
 __CFG_BOREN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\JAM\AppData\Local\Temp\s29g.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\JAM\AppData\Local\Temp\scas.obj
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __size_of_InitApp 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lbank10 0 0 ABS 0 bank10 -
@@ -350,15 +390,17 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 26 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
+__pmaintext 76 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
 __Lbigram 0 0 ABS 0 bigram -
 __CFG_BORV$LO 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __CFG_IESO$ON 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
-stackhi 23EF 0 ABS 0 - C:\Users\JAM\AppData\Local\Temp\s29g.obj
-stacklo 2000 0 ABS 0 - C:\Users\JAM\AppData\Local\Temp\s29g.obj
+stackhi 23EF 0 ABS 0 - C:\Users\JAM\AppData\Local\Temp\scas.obj
+stacklo 2000 0 ABS 0 - C:\Users\JAM\AppData\Local\Temp\scas.obj
+_ADCON0bits 9D 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_CM2CON0bits 113 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
@@ -371,9 +413,11 @@ __Hintentry 1A 0 CODE 0 intentry -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 4 0 CODE 0 reset_vec -
-__ptext1 34 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
-__ptext2 36 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
-__end_of_InitApp 36 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
+_CPSCON0bits 1E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_DACCON0bits 118 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+__ptext1 26 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
+__ptext2 8A 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
+__end_of_InitApp 76 0 CODE 0 text1 dist/HT_PIC16F54/production\EE496.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __size_of_ConfigureOscillator 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
@@ -386,8 +430,12 @@ __Lfunctab 0 0 CODE 0 functab -
 __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/HT_PIC16F54/production\EE496.production.obj
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 34 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
-_ConfigureOscillator 36 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
+__end_of_main 8A 0 CODE 0 maintext dist/HT_PIC16F54/production\EE496.production.obj
+_ConfigureOscillator 8A 0 CODE 0 text2 dist/HT_PIC16F54/production\EE496.production.obj
+_IOCAN 392 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_IOCAP 391 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_TRISA 8C 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
+_TRISC 8E 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 __CFG_CPD$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
@@ -421,6 +469,6 @@ __CFG_PWRTE$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production\EE496.production.obj
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackCOMMON 1 70 70 1 1
-intentry 0 4 8 18 2
+intentry 0 4 8 49 2
 reset_vec 0 0 0 2 2
 config 0 8007 1000E 2 2

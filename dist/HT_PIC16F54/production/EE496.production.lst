@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.38 build -256452561 
-                                                                                               Tue Dec 06 23:20:02 2016
+                                                                                               Wed Dec 07 03:10:20 2016
 
 Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010351
      1                           	processor	16F1825
@@ -744,271 +744,394 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    738  0FED                     	;# 
    739  0FEE                     	;# 
    740  0FEF                     	;# 
-   741                           
-   742                           ; #config settings
-   743  0000                     
-   744                           	psect	cinit
-   745  000F                     start_initialization:	
-   746  000F                     __initialization:	
-   747  000F                     end_of_initialization:	
-   748                           ;End of C runtime variable initialization code
-   749                           
-   750  000F                     __end_of__initialization:	
-   751  000F  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
-   752  0010  0020               	movlb	0
-   753  0011  3180  2813         	ljmp	_main	;jump to C main() function
-   754                           
-   755                           	psect	cstackCOMMON
-   756  0070                     __pcstackCOMMON:	
-   757  0070                     ?_ConfigureOscillator:	
-   758  0070                     ?_InitApp:	
-   759                           ; 1 bytes @ 0x0
-   760                           
-   761  0070                     ?_isr:	
-   762                           ; 1 bytes @ 0x0
+   741  001E                     _CPSCON0bits	set	30
+   742  000B                     _INTCONbits	set	11
+   743  009D                     _ADCON0bits	set	157
+   744  0099                     _OSCCONbits	set	153
+   745  008C                     _TRISA	set	140
+   746  008E                     _TRISC	set	142
+   747  0111                     _CM1CON0bits	set	273
+   748  0113                     _CM2CON0bits	set	275
+   749  0118                     _DACCON0bits	set	280
+   750  0117                     _FVRCONbits	set	279
+   751  010C                     _LATA	set	268
+   752  010E                     _LATC	set	270
+   753  011A                     _SRCON0bits	set	282
+   754  018C                     _ANSELA	set	396
+   755  018E                     _ANSELC	set	398
+   756  020C                     _WPUA	set	524
+   757  020E                     _WPUC	set	526
+   758  038C                     _INLVLA	set	908
+   759  038E                     _INLVLC	set	910
+   760  0392                     _IOCAN	set	914
+   761  0391                     _IOCAP	set	913
+   762  039C                     _MDCONbits	set	924
    763                           
-   764  0070                     ??_isr:	
-   765                           ; 1 bytes @ 0x0
-   766                           
-   767  0070                     ?_main:	
-   768                           ; 1 bytes @ 0x0
-   769                           
-   770                           
-   771                           ; 1 bytes @ 0x0
-   772  0070                     	ds	1
-   773  0071                     ??_ConfigureOscillator:	
-   774  0071                     ??_InitApp:	
-   775                           ; 1 bytes @ 0x1
+   764                           ; #config settings
+   765  0000                     
+   766                           	psect	cinit
+   767  000F                     start_initialization:	
+   768  000F                     __initialization:	
+   769  000F                     end_of_initialization:	
+   770                           ;End of C runtime variable initialization code
+   771                           
+   772  000F                     __end_of__initialization:	
+   773  000F  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   774  0010  0020               	movlb	0
+   775  0011  3180  283B         	ljmp	_main	;jump to C main() function
    776                           
-   777  0071                     ??_main:	
-   778                           ; 1 bytes @ 0x1
-   779                           
-   780                           
-   781                           	psect	maintext
-   782  0013                     __pmaintext:	
-   783                           ; 1 bytes @ 0x1
-   784 ;;
-   785 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   786 ;;
-   787 ;; *************** function _main *****************
-   788 ;; Defined at:
-   789 ;;		line 26 in file "main.c"
-   790 ;; Parameters:    Size  Location     Type
-   791 ;;		None
-   792 ;; Auto vars:     Size  Location     Type
-   793 ;;		None
-   794 ;; Return value:  Size  Location     Type
-   795 ;;                  1    wreg      void 
-   796 ;; Registers used:
-   797 ;;		status,2, status,0, pclath, cstack
-   798 ;; Tracked objects:
-   799 ;;		On entry : B1F/0
-   800 ;;		On exit  : 0/0
-   801 ;;		Unchanged: 0/0
-   802 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   777                           	psect	cstackCOMMON
+   778  0070                     __pcstackCOMMON:	
+   779  0070                     ?_ConfigureOscillator:	
+   780  0070                     ?_InitApp:	
+   781                           ; 1 bytes @ 0x0
+   782                           
+   783  0070                     ?_isr:	
+   784                           ; 1 bytes @ 0x0
+   785                           
+   786  0070                     ??_isr:	
+   787                           ; 1 bytes @ 0x0
+   788                           
+   789  0070                     ?_main:	
+   790                           ; 1 bytes @ 0x0
+   791                           
+   792                           
+   793                           ; 1 bytes @ 0x0
+   794  0070                     	ds	1
+   795  0071                     ??_ConfigureOscillator:	
+   796  0071                     ??_InitApp:	
+   797                           ; 1 bytes @ 0x1
+   798                           
+   799  0071                     ??_main:	
+   800                           ; 1 bytes @ 0x1
+   801                           
+   802                           
+   803                           	psect	maintext
+   804  003B                     __pmaintext:	
+   805                           ; 1 bytes @ 0x1
+   806 ;;
+   807 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   808 ;;
+   809 ;; *************** function _main *****************
+   810 ;; Defined at:
+   811 ;;		line 26 in file "main.c"
+   812 ;; Parameters:    Size  Location     Type
+   813 ;;		None
+   814 ;; Auto vars:     Size  Location     Type
+   815 ;;		None
+   816 ;; Return value:  Size  Location     Type
+   817 ;;                  1    wreg      void 
+   818 ;; Registers used:
+   819 ;;		wreg, status,2, status,0, pclath, cstack
+   820 ;; Tracked objects:
+   821 ;;		On entry : B1F/0
+   822 ;;		On exit  : 0/0
+   823 ;;		Unchanged: 0/0
+   824 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   803 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   825 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   804 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   826 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   805 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   827 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   806 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   828 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   807 ;;Total ram usage:        0 bytes
-   808 ;; Hardware stack levels required when called:    2
-   809 ;; This function calls:
-   810 ;;		_ConfigureOscillator
-   811 ;;		_InitApp
-   812 ;; This function is called by:
-   813 ;;		Startup code after reset
-   814 ;; This function uses a non-reentrant model
-   815 ;;
-   816                           
-   817                           
-   818                           ;psect for function _main
-   819  0013                     _main:	
-   820                           
-   821                           ;main.c: 29: ConfigureOscillator();
-   822                           
-   823                           ;incstack = 0
-   824                           ; Regs used in _main: [status,2+status,0+pclath+cstack]
-   825  0013  3180  201B  3180   	fcall	_ConfigureOscillator
-   826                           
-   827                           ;main.c: 32: InitApp();
-   828  0016  3180  201A  3180   	fcall	_InitApp
-   829  0019                     l10:	
-   830                           ;main.c: 35: while(1)
-   831                           
-   832                           
-   833                           ;main.c: 36: {
-   834  0019  2819               	goto	l10
-   835  001A                     __end_of_main:	
-   836                           
-   837                           	psect	text1
-   838  001A                     __ptext1:	
-   839 ;; *************** function _InitApp *****************
-   840 ;; Defined at:
-   841 ;;		line 22 in file "user.c"
-   842 ;; Parameters:    Size  Location     Type
-   843 ;;		None
-   844 ;; Auto vars:     Size  Location     Type
-   845 ;;		None
-   846 ;; Return value:  Size  Location     Type
-   847 ;;                  1    wreg      void 
-   848 ;; Registers used:
-   849 ;;		None
-   850 ;; Tracked objects:
-   851 ;;		On entry : 0/0
-   852 ;;		On exit  : 0/0
-   853 ;;		Unchanged: 0/0
-   854 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   829 ;;Total ram usage:        0 bytes
+   830 ;; Hardware stack levels required when called:    2
+   831 ;; This function calls:
+   832 ;;		_ConfigureOscillator
+   833 ;;		_InitApp
+   834 ;; This function is called by:
+   835 ;;		Startup code after reset
+   836 ;; This function uses a non-reentrant model
+   837 ;;
+   838                           
+   839                           
+   840                           ;psect for function _main
+   841  003B                     _main:	
+   842                           
+   843                           ;main.c: 29: ConfigureOscillator();
+   844                           
+   845                           ;incstack = 0
+   846                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   847  003B  3180  2045  3180   	fcall	_ConfigureOscillator
+   848                           
+   849                           ;main.c: 32: InitApp();
+   850  003E  3180  2013  3180   	fcall	_InitApp
+   851                           
+   852                           ;main.c: 35: LATC = 0b0001;
+   853  0041  3001               	movlw	1
+   854  0042  0022               	movlb	2	; select bank2
+   855  0043  008E               	movwf	14	;volatile
+   856  0044                     l12:	
+   857                           ;main.c: 36: while(1)
+   858                           
+   859                           
+   860                           ;main.c: 37: {
+   861  0044  2844               	goto	l12
+   862  0045                     __end_of_main:	
+   863                           
+   864                           	psect	text1
+   865  0013                     __ptext1:	
+   866 ;; *************** function _InitApp *****************
+   867 ;; Defined at:
+   868 ;;		line 22 in file "user.c"
+   869 ;; Parameters:    Size  Location     Type
+   870 ;;		None
+   871 ;; Auto vars:     Size  Location     Type
+   872 ;;		None
+   873 ;; Return value:  Size  Location     Type
+   874 ;;                  1    wreg      void 
+   875 ;; Registers used:
+   876 ;;		status,2
+   877 ;; Tracked objects:
+   878 ;;		On entry : 0/0
+   879 ;;		On exit  : 0/0
+   880 ;;		Unchanged: 0/0
+   881 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   855 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   882 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   856 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   883 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   857 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   884 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   858 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   885 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   859 ;;Total ram usage:        0 bytes
-   860 ;; Hardware stack levels used:    1
-   861 ;; Hardware stack levels required when called:    1
-   862 ;; This function calls:
-   863 ;;		Nothing
-   864 ;; This function is called by:
-   865 ;;		_main
-   866 ;; This function uses a non-reentrant model
-   867 ;;
-   868                           
-   869                           
-   870                           ;psect for function _InitApp
-   871  001A                     _InitApp:	
-   872                           
-   873                           ;incstack = 0
-   874                           ; Regs used in _InitApp: []
-   875  001A  0008               	return
-   876  001B                     __end_of_InitApp:	
-   877                           
-   878                           	psect	text2
-   879  001B                     __ptext2:	
-   880 ;; *************** function _ConfigureOscillator *****************
-   881 ;; Defined at:
-   882 ;;		line 18 in file "system.c"
-   883 ;; Parameters:    Size  Location     Type
-   884 ;;		None
-   885 ;; Auto vars:     Size  Location     Type
-   886 ;;		None
-   887 ;; Return value:  Size  Location     Type
-   888 ;;                  1    wreg      void 
-   889 ;; Registers used:
-   890 ;;		None
-   891 ;; Tracked objects:
-   892 ;;		On entry : 0/0
-   893 ;;		On exit  : 0/0
-   894 ;;		Unchanged: 0/0
-   895 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12
-   896 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0
-   897 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0
-   898 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0
-   899 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0
-   900 ;;Total ram usage:        0 bytes
-   901 ;; Hardware stack levels used:    1
-   902 ;; Hardware stack levels required when called:    1
-   903 ;; This function calls:
-   904 ;;		Nothing
-   905 ;; This function is called by:
-   906 ;;		_main
-   907 ;; This function uses a non-reentrant model
-   908 ;;
-   909                           
+   886 ;;Total ram usage:        0 bytes
+   887 ;; Hardware stack levels used:    1
+   888 ;; Hardware stack levels required when called:    1
+   889 ;; This function calls:
+   890 ;;		Nothing
+   891 ;; This function is called by:
+   892 ;;		_main
+   893 ;; This function uses a non-reentrant model
+   894 ;;
+   895                           
+   896                           
+   897                           ;psect for function _InitApp
+   898  0013                     _InitApp:	
+   899                           
+   900                           ;user.c: 27: WPUA = 0x00;
+   901                           
+   902                           ;incstack = 0
+   903                           ; Regs used in _InitApp: [status,2]
+   904  0013  0024               	movlb	4	; select bank4
+   905  0014  018C               	clrf	12	;volatile
+   906                           
+   907                           ;user.c: 28: INLVLA = 0x00;
+   908  0015  0027               	movlb	7	; select bank7
+   909  0016  018C               	clrf	12	;volatile
    910                           
-   911                           ;psect for function _ConfigureOscillator
-   912  001B                     _ConfigureOscillator:	
-   913                           
-   914                           ;incstack = 0
-   915                           ; Regs used in _ConfigureOscillator: []
-   916  001B  0008               	return
-   917  001C                     __end_of_ConfigureOscillator:	
+   911                           ;user.c: 29: LATA = 0x00;
+   912  0017  0022               	movlb	2	; select bank2
+   913  0018  018C               	clrf	12	;volatile
+   914                           
+   915                           ;user.c: 32: WPUC = 0x00;
+   916  0019  0024               	movlb	4	; select bank4
+   917  001A  018E               	clrf	14	;volatile
    918                           
-   919                           	psect	intentry
-   920  0004                     __pintentry:	
-   921 ;; *************** function _isr *****************
-   922 ;; Defined at:
-   923 ;;		line 23 in file "interrupts.c"
-   924 ;; Parameters:    Size  Location     Type
-   925 ;;		None
-   926 ;; Auto vars:     Size  Location     Type
-   927 ;;		None
-   928 ;; Return value:  Size  Location     Type
-   929 ;;                  1    wreg      void 
-   930 ;; Registers used:
-   931 ;;		None
-   932 ;; Tracked objects:
-   933 ;;		On entry : 0/0
-   934 ;;		On exit  : 0/0
-   935 ;;		Unchanged: 0/0
-   936 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   919                           ;user.c: 33: INLVLC = 0x00;
+   920  001B  0027               	movlb	7	; select bank7
+   921  001C  018E               	clrf	14	;volatile
+   922                           
+   923                           ;user.c: 34: LATC = 0x0;
+   924  001D  0022               	movlb	2	; select bank2
+   925  001E  018E               	clrf	14	;volatile
+   926                           
+   927                           ;user.c: 36: IOCAP = 0x00;
+   928  001F  0027               	movlb	7	; select bank7
+   929  0020  0191               	clrf	17	;volatile
+   930                           
+   931                           ;user.c: 37: IOCAN = 0x00;
+   932  0021  0192               	clrf	18	;volatile
+   933                           
+   934                           ;user.c: 39: FVRCONbits.FVREN = 0b0;
+   935  0022  0022               	movlb	2	; select bank2
+   936  0023  1397               	bcf	23,7	;volatile
+   937                           
+   938                           ;user.c: 40: FVRCONbits.TSEN = 0b0;
+   939  0024  1297               	bcf	23,5	;volatile
+   940                           
+   941                           ;user.c: 43: TRISA = 0x00;
+   942  0025  0021               	movlb	1	; select bank1
+   943  0026  018C               	clrf	12	;volatile
+   944                           
+   945                           ;user.c: 44: ANSELA = 0x00;
+   946  0027  0023               	movlb	3	; select bank3
+   947  0028  018C               	clrf	12	;volatile
+   948                           
+   949                           ;user.c: 46: TRISC = 0x00;
+   950  0029  0021               	movlb	1	; select bank1
+   951  002A  018E               	clrf	14	;volatile
+   952                           
+   953                           ;user.c: 47: ANSELC = 0x00;
+   954  002B  0023               	movlb	3	; select bank3
+   955  002C  018E               	clrf	14	;volatile
+   956                           
+   957                           ;user.c: 49: ADCON0bits.ADON = 0b0;
+   958  002D  0021               	movlb	1	; select bank1
+   959  002E  101D               	bcf	29,0	;volatile
+   960                           
+   961                           ;user.c: 50: DACCON0bits.DACEN = 0b0;
+   962  002F  0022               	movlb	2	; select bank2
+   963  0030  1398               	bcf	24,7	;volatile
+   964                           
+   965                           ;user.c: 51: DACCON0bits.DACOE = 0b0;
+   966  0031  1298               	bcf	24,5	;volatile
+   967                           
+   968                           ;user.c: 53: SRCON0bits.SRLEN = 0b0;
+   969  0032  139A               	bcf	26,7	;volatile
+   970                           
+   971                           ;user.c: 55: CM1CON0bits.C1ON = 0b0;
+   972  0033  1391               	bcf	17,7	;volatile
+   973                           
+   974                           ;user.c: 56: CM2CON0bits.C2ON = 0b0;
+   975  0034  1393               	bcf	19,7	;volatile
+   976                           
+   977                           ;user.c: 58: MDCONbits.MDEN = 0b0;
+   978  0035  0027               	movlb	7	; select bank7
+   979  0036  139C               	bcf	28,7	;volatile
+   980                           
+   981                           ;user.c: 59: CPSCON0bits.CPSON = 0b0;
+   982  0037  0020               	movlb	0	; select bank0
+   983  0038  139E               	bcf	30,7	;volatile
+   984                           
+   985                           ;user.c: 68: INTCONbits.GIE = 0b0;
+   986  0039  138B               	bcf	11,7	;volatile
+   987  003A  0008               	return
+   988  003B                     __end_of_InitApp:	
+   989                           
+   990                           	psect	text2
+   991  0045                     __ptext2:	
+   992 ;; *************** function _ConfigureOscillator *****************
+   993 ;; Defined at:
+   994 ;;		line 18 in file "system.c"
+   995 ;; Parameters:    Size  Location     Type
+   996 ;;		None
+   997 ;; Auto vars:     Size  Location     Type
+   998 ;;		None
+   999 ;; Return value:  Size  Location     Type
+  1000 ;;                  1    wreg      void 
+  1001 ;; Registers used:
+  1002 ;;		wreg, status,2, status,0
+  1003 ;; Tracked objects:
+  1004 ;;		On entry : 0/0
+  1005 ;;		On exit  : 0/0
+  1006 ;;		Unchanged: 0/0
+  1007 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   937 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1008 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   938 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1009 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   939 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+  1010 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   940 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1011 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   941 ;;Total ram usage:        1 bytes
-   942 ;; Hardware stack levels used:    1
-   943 ;; This function calls:
-   944 ;;		Nothing
-   945 ;; This function is called by:
-   946 ;;		Interrupt level 1
-   947 ;; This function uses a non-reentrant model
-   948 ;;
-   949                           
-   950  0004                     _isr:	
-   951                           
-   952                           ;incstack = 0
-   953  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
-   954                           
-   955                           ; Regs used in _isr: []
-   956  0005  3180               	pagesel	$
-   957  0006  0020               	movlb	0	; select bank0
-   958  0007  087F               	movf	127,w
-   959  0008  00F0               	movwf	??_isr
-   960  0009  0870               	movf	??_isr,w
-   961  000A  00FF               	movwf	127
-   962  000B  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
-   963  000C  0009               	retfie
-   964  000D                     __end_of_isr:	
-   965  007E                     btemp	set	126	;btemp
-   966  007E                     int$flags	set	126
-   967  007E                     wtemp	set	126
-   968  007E                     wtemp0	set	126
-   969  0080                     wtemp1	set	128
-   970  0082                     wtemp2	set	130
-   971  0084                     wtemp3	set	132
-   972  0086                     wtemp4	set	134
-   973  0088                     wtemp5	set	136
-   974  007F                     wtemp6	set	127
-   975  007E                     ttemp	set	126
-   976  007E                     ttemp0	set	126
-   977  0081                     ttemp1	set	129
-   978  0084                     ttemp2	set	132
-   979  0087                     ttemp3	set	135
-   980  007F                     ttemp4	set	127
-   981  007E                     ltemp	set	126
-   982  007E                     ltemp0	set	126
-   983  0082                     ltemp1	set	130
-   984  0086                     ltemp2	set	134
-   985  0080                     ltemp3	set	128
+  1012 ;;Total ram usage:        0 bytes
+  1013 ;; Hardware stack levels used:    1
+  1014 ;; Hardware stack levels required when called:    1
+  1015 ;; This function calls:
+  1016 ;;		Nothing
+  1017 ;; This function is called by:
+  1018 ;;		_main
+  1019 ;; This function uses a non-reentrant model
+  1020 ;;
+  1021                           
+  1022                           
+  1023                           ;psect for function _ConfigureOscillator
+  1024  0045                     _ConfigureOscillator:	
+  1025                           
+  1026                           ;system.c: 28: OSCCONbits.IRCF = 0b1110;
+  1027                           
+  1028                           ;incstack = 0
+  1029                           ; Regs used in _ConfigureOscillator: [wreg+status,2+status,0]
+  1030  0045  0021               	movlb	1	; select bank1
+  1031  0046  0819               	movf	25,w	;volatile
+  1032  0047  3987               	andlw	-121
+  1033  0048  3870               	iorlw	112
+  1034  0049  0099               	movwf	25	;volatile
+  1035                           
+  1036                           ;system.c: 29: OSCCONbits.SCS = 0b00;
+  1037  004A  30FC               	movlw	-4
+  1038  004B  0599               	andwf	25,f	;volatile
+  1039  004C  0008               	return
+  1040  004D                     __end_of_ConfigureOscillator:	
+  1041                           
+  1042                           	psect	intentry
+  1043  0004                     __pintentry:	
+  1044 ;; *************** function _isr *****************
+  1045 ;; Defined at:
+  1046 ;;		line 23 in file "interrupts.c"
+  1047 ;; Parameters:    Size  Location     Type
+  1048 ;;		None
+  1049 ;; Auto vars:     Size  Location     Type
+  1050 ;;		None
+  1051 ;; Return value:  Size  Location     Type
+  1052 ;;                  1    wreg      void 
+  1053 ;; Registers used:
+  1054 ;;		None
+  1055 ;; Tracked objects:
+  1056 ;;		On entry : 0/0
+  1057 ;;		On exit  : 0/0
+  1058 ;;		Unchanged: 0/0
+  1059 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1060 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1061 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1062 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1063 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1064 ;;Total ram usage:        1 bytes
+  1065 ;; Hardware stack levels used:    1
+  1066 ;; This function calls:
+  1067 ;;		Nothing
+  1068 ;; This function is called by:
+  1069 ;;		Interrupt level 1
+  1070 ;; This function uses a non-reentrant model
+  1071 ;;
+  1072                           
+  1073  0004                     _isr:	
+  1074                           
+  1075                           ;incstack = 0
+  1076  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
+  1077                           
+  1078                           ; Regs used in _isr: []
+  1079  0005  3180               	pagesel	$
+  1080  0006  0020               	movlb	0	; select bank0
+  1081  0007  087F               	movf	127,w
+  1082  0008  00F0               	movwf	??_isr
+  1083  0009  0870               	movf	??_isr,w
+  1084  000A  00FF               	movwf	127
+  1085  000B  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
+  1086  000C  0009               	retfie
+  1087  000D                     __end_of_isr:	
+  1088  007E                     btemp	set	126	;btemp
+  1089  007E                     int$flags	set	126
+  1090  007E                     wtemp	set	126
+  1091  007E                     wtemp0	set	126
+  1092  0080                     wtemp1	set	128
+  1093  0082                     wtemp2	set	130
+  1094  0084                     wtemp3	set	132
+  1095  0086                     wtemp4	set	134
+  1096  0088                     wtemp5	set	136
+  1097  007F                     wtemp6	set	127
+  1098  007E                     ttemp	set	126
+  1099  007E                     ttemp0	set	126
+  1100  0081                     ttemp1	set	129
+  1101  0084                     ttemp2	set	132
+  1102  0087                     ttemp3	set	135
+  1103  007F                     ttemp4	set	127
+  1104  007E                     ltemp	set	126
+  1105  007E                     ltemp0	set	126
+  1106  0082                     ltemp1	set	130
+  1107  0086                     ltemp2	set	134
+  1108  0080                     ltemp3	set	128
 
 
 Data Sizes:
@@ -1287,28 +1410,36 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.38 build -256452561 
-Symbol Table                                                                                   Tue Dec 06 23:20:02 2016
+Symbol Table                                                                                   Wed Dec 07 03:10:20 2016
 
-                 __CFG_CP$OFF 0000                            l10 0019                   __CFG_LVP$ON 0000  
+                 __CFG_CP$OFF 0000                            l12 0044                   __CFG_LVP$ON 0000  
                 __CFG_CPD$OFF 0000                           _isr 0004                  __CFG_BORV$LO 0000  
                 __CFG_IESO$ON 0000                          ?_isr 0070                  __CFG_WDTE$ON 0000  
-               __CFG_FCMEN$ON 0000                          _main 0013                          btemp 007E  
-               __CFG_BOREN$ON 0000                          ltemp 007E                          start 000D  
-                        ttemp 007E                          wtemp 007E                 __CFG_FOSC$ECH 0000  
-               __CFG_MCLRE$ON 0000               __end_of_InitApp 001B                         ??_isr 0070  
-               __CFG_PLLEN$ON 0000                         ?_main 0070           _ConfigureOscillator 001B  
-               __CFG_WRT$BOOT 0000                         ltemp0 007E                         ltemp1 0082  
-                       ltemp2 0086                         ltemp3 0080                         ttemp0 007E  
-                       ttemp1 0081                         ttemp2 0084                         ttemp3 0087  
-                       ttemp4 007F                         wtemp0 007E                         wtemp1 0080  
-                       wtemp2 0082                         wtemp3 0084                         wtemp4 0086  
-                       wtemp5 0088                         wtemp6 007F          ?_ConfigureOscillator 0070  
-             __initialization 000F                  __end_of_main 001A                        ??_main 0071  
+                        _LATA 010C                          _LATC 010E                          _WPUA 020C  
+                        _WPUC 020E                 __CFG_FCMEN$ON 0000                          _main 003B  
+                        btemp 007E                 __CFG_BOREN$ON 0000                          ltemp 007E  
+                        start 000D                          ttemp 007E                          wtemp 007E  
+               __CFG_FOSC$ECH 0000                 __CFG_MCLRE$ON 0000               __end_of_InitApp 003B  
+                       ??_isr 0070                 __CFG_PLLEN$ON 0000                         ?_main 0070  
+                       _IOCAN 0392                         _IOCAP 0391                         _TRISA 008C  
+                       _TRISC 008E           _ConfigureOscillator 0045                 __CFG_WRT$BOOT 0000  
+                       ltemp0 007E                         ltemp1 0082                         ltemp2 0086  
+                       ltemp3 0080                         ttemp0 007E                         ttemp1 0081  
+                       ttemp2 0084                         ttemp3 0087                         ttemp4 007F  
+                       wtemp0 007E                         wtemp1 0080                         wtemp2 0082  
+                       wtemp3 0084                         wtemp4 0086                         wtemp5 0088  
+                       wtemp6 007F          ?_ConfigureOscillator 0070               __initialization 000F  
+                __end_of_main 0045                        ??_main 0071                        _ANSELA 018C  
+                      _ANSELC 018E                        _INLVLA 038C                        _INLVLC 038E  
                    ??_InitApp 0071         ??_ConfigureOscillator 0071                __CFG_PWRTE$OFF 0000  
               __CFG_STVREN$ON 0000       __end_of__initialization 000F                __pcstackCOMMON 0070  
-                  __pmaintext 0013                    __pintentry 0004                       _InitApp 001A  
-                     __ptext1 001A                       __ptext2 001B                  __size_of_isr 0009  
-        end_of_initialization 000F   __end_of_ConfigureOscillator 001C           start_initialization 000F  
-                 __end_of_isr 000D                     ___latbits 0002                      ?_InitApp 0070  
-            __size_of_InitApp 0001                 __size_of_main 0007  __size_of_ConfigureOscillator 0001  
-                    int$flags 007E                      intlevel1 0000             __CFG_CLKOUTEN$OFF 0000  
+                  __pmaintext 003B                    __pintentry 0004                       _InitApp 0013  
+                     __ptext1 0013                       __ptext2 0045                  __size_of_isr 0009  
+                   _MDCONbits 039C          end_of_initialization 000F                   _DACCON0bits 0118  
+ __end_of_ConfigureOscillator 004D                   _CM1CON0bits 0111                   _CM2CON0bits 0113  
+         start_initialization 000F                   __end_of_isr 000D                     ___latbits 0002  
+                    ?_InitApp 0070                   _CPSCON0bits 001E                    _ADCON0bits 009D  
+            __size_of_InitApp 0028                 __size_of_main 000A  __size_of_ConfigureOscillator 0008  
+                    int$flags 007E                    _INTCONbits 000B                    _FVRCONbits 0117  
+                    intlevel1 0000             __CFG_CLKOUTEN$OFF 0000                    _OSCCONbits 0099  
+                  _SRCON0bits 011A  

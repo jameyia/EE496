@@ -4,6 +4,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
 "13 user.h
 [v _InitApp `(v ~T0 @X0 0 ef ]
+"1942 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[v _LATC `Vuc ~T0 @X0 0 e@270 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2639,20 +2641,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 32: InitApp();
 "32
 [e ( _InitApp ..  ]
-[; ;main.c: 35: while(1)
+[; ;main.c: 35: LATC = 0b0001;
 "35
-[e :U 326 ]
-[; ;main.c: 36: {
+[e = _LATC -> -> 1 `i `uc ]
+[; ;main.c: 36: while(1)
 "36
+[e :U 326 ]
+[; ;main.c: 37: {
+"37
 {
-"38
+"39
 }
 [e :U 325 ]
-"35
+"36
 [e $U 326  ]
 [e :U 327 ]
-[; ;main.c: 38: }
-[; ;main.c: 40: }
-"40
+[; ;main.c: 39: }
+[; ;main.c: 41: }
+"41
 [e :UE 324 ]
 }

@@ -3646,6 +3646,7 @@ ConfigureOscillator();
 InitApp();
 
 
+LATC = 0b0001;
 while(1)
 {
 

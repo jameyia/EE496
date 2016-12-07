@@ -32,6 +32,7 @@ void main(void)
     InitApp();
 
 
+    LATC = 0b0001;
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */

@@ -3637,6 +3637,43 @@ void InitApp(void);
 void InitApp(void)
 {
 
-# 31
+
+
+WPUA = 0x00;
+INLVLA = 0x00;
+LATA = 0x00;
+
+
+WPUC = 0x00;
+INLVLC = 0x00;
+LATC = 0x0;
+
+IOCAP = 0x00;
+IOCAN = 0x00;
+
+FVRCONbits.FVREN = 0b0;
+FVRCONbits.TSEN = 0b0;
+
+
+TRISA = 0x00;
+ANSELA = 0x00;
+
+TRISC = 0x00;
+ANSELC = 0x00;
+
+ADCON0bits.ADON = 0b0;
+DACCON0bits.DACEN = 0b0;
+DACCON0bits.DACOE = 0b0;
+
+SRCON0bits.SRLEN = 0b0;
+
+CM1CON0bits.C1ON = 0b0;
+CM2CON0bits.C2ON = 0b0;
+
+MDCONbits.MDEN = 0b0;
+CPSCON0bits.CPSON = 0b0;
+
+# 68
+INTCONbits.GIE = 0b0;
 }
 

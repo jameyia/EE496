@@ -3637,5 +3637,8 @@ void ConfigureOscillator(void);
 void ConfigureOscillator(void)
 {
 
-# 25
+# 28
+OSCCONbits.IRCF = 0b1110;
+OSCCONbits.SCS = 0b00;
+
 }

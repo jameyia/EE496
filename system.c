@@ -22,4 +22,10 @@ void ConfigureOscillator(void)
     /* Typical actions in this function are to tweak the oscillator tuning
     register, select new clock sources, and to wait until new clock sources
     are stable before resuming execution of the main project. */
+    
+    // SPLLEN is ignored, due to configuration bits. Read datasheet pg 68
+    
+    OSCCONbits.IRCF = 0b1110; // Set internal oscillator frequency to 8MHz
+    OSCCONbits.SCS = 0b00; //Clock determined by FOSC in configuration word 1.        
+            
 }
