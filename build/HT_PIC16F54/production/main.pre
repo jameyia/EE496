@@ -3645,11 +3645,15 @@ ConfigureOscillator();
 
 InitApp();
 
+unsigned char var = 0;
 
-LATC = 0b0001;
 while(1)
 {
 
+
+LATC = var;
+var++;
+_delay(100000);
 }
 
 }

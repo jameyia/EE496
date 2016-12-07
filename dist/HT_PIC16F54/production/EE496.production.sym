@@ -1,6 +1,6 @@
 __CFG_PLLEN$ON 0 0 ABS 0
 __S0 8009 0 ABS 0
-__S1 71 0 ABS 0
+__S1 74 0 ABS 0
 __S2 0 0 ABS 0
 __S3 0 0 ABS 0
 __Hintentry D 0 CODE 0
@@ -86,11 +86,11 @@ __Lsfr9 0 0 ABS 0
 __Hcode 0 0 ABS 0
 __Lcode 0 0 ABS 0
 stackhi 23EF 0 ABS 0
-__end_of_ConfigureOscillator 4D 0 CODE 0
+__end_of_ConfigureOscillator 5B 0 CODE 0
 stacklo 2000 0 ABS 0
 __Hinit D 0 CODE 0
 __Linit D 0 CODE 0
-__end_of_main 45 0 CODE 0
+__end_of_main 53 0 CODE 0
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 __CFG_LVP$ON 0 0 ABS 0
@@ -171,7 +171,7 @@ __Lbank8 0 0 ABS 0
 __Hbank9 0 0 ABS 0
 __Lbank9 0 0 ABS 0
 __ptext1 13 0 CODE 0
-__ptext2 45 0 CODE 0
+__ptext2 53 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 __end_of_InitApp 3B 0 CODE 0
@@ -187,7 +187,8 @@ __Lspace_0 0 0 ABS 0
 _InitApp 13 0 CODE 0
 __end_of_isr D 0 CODE 0
 __CFG_IESO$ON 0 0 ABS 0
-__Hspace_1 71 0 ABS 0
+main@var 73 0 COMMON 1
+__Hspace_1 74 0 ABS 0
 __Lspace_1 0 0 ABS 0
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
@@ -271,15 +272,15 @@ __CFG_MCLRE$ON 0 0 ABS 0
 __initialization F 0 CODE 0
 __CFG_CP$OFF 0 0 ABS 0
 __CFG_FCMEN$ON 0 0 ABS 0
-_ConfigureOscillator 45 0 CODE 0
+_ConfigureOscillator 53 0 CODE 0
 %segments
 reset_vec 0 3 CODE 0 0
-intentry 8 99 CODE 8 0
+intentry 8 B5 CODE 8 0
 config 1000E 10011 CONFIG 1000E 0
-cstackCOMMON 70 70 COMMON 70 1
+cstackCOMMON 70 73 COMMON 70 1
 %locals
 dist/HT_PIC16F54/production\EE496.production.obj
-C:\Users\JAM\AppData\Local\Temp\scas.
+C:\Users\JAM\AppData\Local\Temp\sai8.
 1599 F 0 CODE 0
 1602 F 0 CODE 0
 1608 F 0 CODE 0
@@ -290,8 +291,11 @@ main.c
 26 3B 0 CODE 0
 29 3B 0 CODE 0
 32 3E 0 CODE 0
-35 41 0 CODE 0
-36 44 0 CODE 0
+34 41 0 CODE 0
+40 42 0 CODE 0
+41 45 0 CODE 0
+42 49 0 CODE 0
+36 52 0 CODE 0
 user.c
 22 13 0 CODE 0
 27 13 0 CODE 0
@@ -319,10 +323,10 @@ user.c
 68 39 0 CODE 0
 69 3A 0 CODE 0
 system.c
-18 45 0 CODE 0
-28 45 0 CODE 0
-29 4A 0 CODE 0
-31 4C 0 CODE 0
+18 53 0 CODE 0
+28 53 0 CODE 0
+29 58 0 CODE 0
+31 5A 0 CODE 0
 interrupts.c
 23 4 0 CODE 0
 50 9 0 CODE 0

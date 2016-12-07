@@ -31,11 +31,15 @@ void main(void)
     /* Initialize I/O and Peripherals for application */
     InitApp();
 
-
-    LATC = 0b0001;
+    unsigned char var = 0;
+    //LATC = 0b0001;
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
+        
+        LATC = var;
+        var++;
+        _delay(100000);
     }
 
 }
