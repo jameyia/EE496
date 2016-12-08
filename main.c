@@ -20,6 +20,10 @@
 
 /* i.e. uint8_t <variable_name>; */
 
+unsigned long multiplexed_counter = 0;
+unsigned int next_frame_counter = 0;
+unsigned char var = 0;
+
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
@@ -31,15 +35,15 @@ void main(void)
     /* Initialize I/O and Peripherals for application */
     InitApp();
 
-    unsigned char var = 0;
+    
     //LATC = 0b0001;
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
         
         LATC = var;
-        var++;
-        _delay(100000);
+        //var++;
+        //_delay(100000);
     }
 
 }

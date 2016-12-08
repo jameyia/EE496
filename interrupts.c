@@ -11,6 +11,8 @@
 #include <stdint.h>         /* For uint8_t definition */
 #include <stdbool.h>        /* For true/false definition */
 
+#include "user.h"           /* For MACRO definitions */
+
 /******************************************************************************/
 /* Interrupt Routines                                                         */
 /******************************************************************************/
@@ -20,6 +22,10 @@
  * _PIC12 */
 #ifndef _PIC12
 
+extern unsigned char var;
+extern unsigned long multiplexed_counter;
+extern unsigned int next_frame_counter;
+
 void interrupt isr(void)
 {
     /* This code stub shows general interrupt handling.  Note that these
@@ -27,6 +33,29 @@ void interrupt isr(void)
     Do not use a seperate if block for each interrupt flag to avoid run
     time errors. */
 
+    if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        INTCONbits.TMR0IF = 0; // clear interrupt flag
+        
+        multiplexed_counter++;
+        
+        if(multiplexed_counter >= MULTIPLEX_LEDS)
+        {
+            // MULTIPLEX / SHIFT OUT DATA!!!
+            
+            multiplexed_counter = 0;
+            next_frame_counter++;
+            
+            if(next_frame_counter >= NEXT_FRAME)
+            {
+                // UPDATE FRAME
+                var++;
+            }
+        }
+        
+        
+    }
+    
 #if 0
     
     /* TODO Add interrupt routine code here. */
@@ -44,6 +73,8 @@ void interrupt isr(void)
     {
         /* Unhandled interrupts */
     }
+    
+    
 
 #endif
 

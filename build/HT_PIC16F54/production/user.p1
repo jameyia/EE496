@@ -105,6 +105,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S58 . . . ]
 "993
 [v _CPSCON0bits `VS58 ~T0 @X0 0 e@30 ]
+"1331
+[s S75 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S75 . PS0 PS1 PS2 PSA TMR0SE TMR0CS INTEDG nWPUEN ]
+"1341
+[s S76 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S76 . PS . T0SE T0CS ]
+"1330
+[u S74 `S75 1 `S76 1 ]
+[n S74 . . . ]
+"1348
+[v _OPTION_REGbits `VS74 ~T0 @X0 0 e@149 ]
 "343
 [s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S27 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
@@ -2735,7 +2746,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;user.h: 13: void InitApp(void);
+[; ;user.h: 16: void InitApp(void);
 "22 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
 "23
@@ -2810,10 +2821,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 59: CPSCON0bits.CPSON = 0b0;
 "59
 [e = . . _CPSCON0bits 0 6 -> -> 0 `i `uc ]
-[; ;user.c: 68: INTCONbits.GIE = 0b0;
+[; ;user.c: 68: OPTION_REGbits.nWPUEN = 0b1;
 "68
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 69: }
+[e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 69: OPTION_REGbits.TMR0CS = 0b0;
 "69
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 70: OPTION_REGbits.PSA = 0b1;
+"70
+[e = . . _OPTION_REGbits 0 3 -> -> 1 `i `uc ]
+[; ;user.c: 76: INTCONbits.GIE = 0b1;
+"76
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 77: INTCONbits.TMR0IE = 0b1;
+"77
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 78: }
+"78
 [e :UE 324 ]
 }

@@ -3630,7 +3630,7 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
 
-# 13 "user.h"
+# 16 "user.h"
 void InitApp(void);
 
 # 22 "user.c"
@@ -3674,6 +3674,12 @@ MDCONbits.MDEN = 0b0;
 CPSCON0bits.CPSON = 0b0;
 
 # 68
-INTCONbits.GIE = 0b0;
+OPTION_REGbits.nWPUEN = 0b1;
+OPTION_REGbits.TMR0CS = 0b0;
+OPTION_REGbits.PSA = 0b1;
+
+# 76
+INTCONbits.GIE = 0b1;
+INTCONbits.TMR0IE = 0b1;
 }
 

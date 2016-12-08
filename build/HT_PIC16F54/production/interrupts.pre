@@ -3630,10 +3630,41 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
 
-# 23 "interrupts.c"
+# 16 "user.h"
+void InitApp(void);
+
+# 25 "interrupts.c"
+extern unsigned char var;
+extern unsigned long multiplexed_counter;
+extern unsigned int next_frame_counter;
+
 void interrupt isr(void)
 {
 
-# 50
+# 36
+if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+{
+INTCONbits.TMR0IF = 0;
+
+multiplexed_counter++;
+
+if(multiplexed_counter >= 204800)
+{
+
+
+multiplexed_counter = 0;
+next_frame_counter++;
+
+if(next_frame_counter >= 10000)
+{
+
+var++;
+}
+}
+
+
+}
+
+# 81
 }
 

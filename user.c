@@ -63,8 +63,17 @@ void InitApp(void)
     
     
     /* Initialize peripherals */
+    
+    // TIMER 0 OPTION_REG
+    OPTION_REGbits.nWPUEN = 0b1; //Weak Pull-ups disabled
+    OPTION_REGbits.TMR0CS = 0b0; // Internal Clock (Fosc/4)
+    OPTION_REGbits.PSA = 0b1; //No Prescaler
+    
+    
+    
 
     /* Enable interrupts */
-    INTCONbits.GIE = 0b0; // Disable all interrupts
+    INTCONbits.GIE = 0b1; // Enable interrupts
+    INTCONbits.TMR0IE = 0b1; // Enable Timer 0 interrupt
 }
 

@@ -11,15 +11,15 @@
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"23 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
+"29 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
-"26 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+"30 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
 [v _main main `(v  1 e 1 0 ]
 "18 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
 "22 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
 [v _InitApp InitApp `(v  1 e 1 0 ]
-[s S290 . 1 `uc 1 IOCIF 1 0 :1:0 
+[s S19 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -29,14 +29,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "360 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
-[s S299 . 1 `uc 1 . 1 0 :2:0 
+[s S28 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S304 . 1 `S290 1 . 1 0 `S299 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES304  1 e 1 @11 ]
-[s S264 . 1 `uc 1 T0XCS 1 0 :1:0 
+[u S33 . 1 `S19 1 . 1 0 `S28 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES33  1 e 1 @11 ]
+[s S303 . 1 `uc 1 T0XCS 1 0 :1:0 
 `uc 1 CPSOUT 1 0 :1:1 
 `uc 1 CPSRNG0 1 0 :1:2 
 `uc 1 CPSRNG1 1 0 :1:3 
@@ -45,16 +45,33 @@
 `uc 1 CPSON 1 0 :1:7 
 ]
 "993
-[s S272 . 1 `uc 1 . 1 0 :2:0 
+[s S311 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 CPSRNG 1 0 :2:2 
 ]
-[u S275 . 1 `S264 1 . 1 0 `S272 1 . 1 0 ]
-[v _CPSCON0bits CPSCON0bits `VES275  1 e 1 @30 ]
+[u S314 . 1 `S303 1 . 1 0 `S311 1 . 1 0 ]
+[v _CPSCON0bits CPSCON0bits `VES314  1 e 1 @30 ]
 "1077
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1126
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
-[s S38 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S329 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1348
+[s S338 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S343 . 1 `S329 1 . 1 0 `S338 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES343  1 e 1 @149 ]
+[s S77 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -64,13 +81,13 @@
 `uc 1 SPLLEN 1 0 :1:7 
 ]
 "1594
-[s S47 . 1 `uc 1 SCS 1 0 :2:0 
+[s S86 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
-[u S51 . 1 `S38 1 . 1 0 `S47 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES51  1 e 1 @153 ]
-[s S112 . 1 `uc 1 ADON 1 0 :1:0 
+[u S90 . 1 `S77 1 . 1 0 `S86 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES90  1 e 1 @153 ]
+[s S151 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -79,20 +96,20 @@
 `uc 1 CHS4 1 0 :1:6 
 ]
 "1773
-[s S120 . 1 `uc 1 . 1 0 :1:0 
+[s S159 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S124 . 1 `uc 1 . 1 0 :1:0 
+[s S163 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S127 . 1 `S112 1 . 1 0 `S120 1 . 1 0 `S124 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES127  1 e 1 @157 ]
+[u S166 . 1 `S151 1 . 1 0 `S159 1 . 1 0 `S163 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES166  1 e 1 @157 ]
 "1898
 [v _LATA LATA `VEuc  1 e 1 @268 ]
 "1942
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S203 . 1 `uc 1 C1SYNC 1 0 :1:0 
+[s S242 . 1 `uc 1 C1SYNC 1 0 :1:0 
 `uc 1 C1HYS 1 0 :1:1 
 `uc 1 C1SP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -102,9 +119,9 @@
 `uc 1 C1ON 1 0 :1:7 
 ]
 "2008
-[u S212 . 1 `S203 1 . 1 0 ]
-[v _CM1CON0bits CM1CON0bits `VES212  1 e 1 @273 ]
-[s S224 . 1 `uc 1 C2SYNC 1 0 :1:0 
+[u S251 . 1 `S242 1 . 1 0 ]
+[v _CM1CON0bits CM1CON0bits `VES251  1 e 1 @273 ]
+[s S263 . 1 `uc 1 C2SYNC 1 0 :1:0 
 `uc 1 C2HYS 1 0 :1:1 
 `uc 1 C2SP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -114,9 +131,9 @@
 `uc 1 C2ON 1 0 :1:7 
 ]
 "2129
-[u S233 . 1 `S224 1 . 1 0 ]
-[v _CM2CON0bits CM2CON0bits `VES233  1 e 1 @275 ]
-[s S80 . 1 `uc 1 ADFVR0 1 0 :1:0 
+[u S272 . 1 `S263 1 . 1 0 ]
+[v _CM2CON0bits CM2CON0bits `VES272  1 e 1 @275 ]
+[s S119 . 1 `uc 1 ADFVR0 1 0 :1:0 
 `uc 1 ADFVR1 1 0 :1:1 
 `uc 1 CDAFVR0 1 0 :1:2 
 `uc 1 CDAFVR1 1 0 :1:3 
@@ -126,12 +143,12 @@
 `uc 1 FVREN 1 0 :1:7 
 ]
 "2305
-[s S89 . 1 `uc 1 ADFVR 1 0 :2:0 
+[s S128 . 1 `uc 1 ADFVR 1 0 :2:0 
 `uc 1 CDAFVR 1 0 :2:2 
 ]
-[u S92 . 1 `S80 1 . 1 0 `S89 1 . 1 0 ]
-[v _FVRCONbits FVRCONbits `VES92  1 e 1 @279 ]
-[s S147 . 1 `uc 1 DACNSS 1 0 :1:0 
+[u S131 . 1 `S119 1 . 1 0 `S128 1 . 1 0 ]
+[v _FVRCONbits FVRCONbits `VES131  1 e 1 @279 ]
+[s S186 . 1 `uc 1 DACNSS 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 DACPSS0 1 0 :1:2 
 `uc 1 DACPSS1 1 0 :1:3 
@@ -141,12 +158,12 @@
 `uc 1 DACEN 1 0 :1:7 
 ]
 "2380
-[s S156 . 1 `uc 1 . 1 0 :2:0 
+[s S195 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 DACPSS 1 0 :2:2 
 ]
-[u S159 . 1 `S147 1 . 1 0 `S156 1 . 1 0 ]
-[v _DACCON0bits DACCON0bits `VES159  1 e 1 @280 ]
-[s S175 . 1 `uc 1 SRPR 1 0 :1:0 
+[u S198 . 1 `S186 1 . 1 0 `S195 1 . 1 0 ]
+[v _DACCON0bits DACCON0bits `VES198  1 e 1 @280 ]
+[s S214 . 1 `uc 1 SRPR 1 0 :1:0 
 `uc 1 SRPS 1 0 :1:1 
 `uc 1 SRNQEN 1 0 :1:2 
 `uc 1 SRQEN 1 0 :1:3 
@@ -156,11 +173,11 @@
 `uc 1 SRLEN 1 0 :1:7 
 ]
 "2491
-[s S184 . 1 `uc 1 . 1 0 :4:0 
+[s S223 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SRCLK 1 0 :3:4 
 ]
-[u S187 . 1 `S175 1 . 1 0 `S184 1 . 1 0 ]
-[v _SRCON0bits SRCON0bits `VES187  1 e 1 @282 ]
+[u S226 . 1 `S214 1 . 1 0 `S223 1 . 1 0 ]
+[v _SRCON0bits SRCON0bits `VES226  1 e 1 @282 ]
 "2673
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "2719
@@ -177,7 +194,7 @@
 [v _IOCAP IOCAP `VEuc  1 e 1 @913 ]
 "5176
 [v _IOCAN IOCAN `VEuc  1 e 1 @914 ]
-[s S245 . 1 `uc 1 MDBIT 1 0 :1:0 
+[s S284 . 1 `uc 1 MDBIT 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 MDOUT 1 0 :1:3 
 `uc 1 MDOPOL 1 0 :1:4 
@@ -186,27 +203,31 @@
 `uc 1 MDEN 1 0 :1:7 
 ]
 "5381
-[u S253 . 1 `S245 1 . 1 0 ]
-[v _MDCONbits MDCONbits `VES253  1 e 1 @924 ]
-"26 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+[u S292 . 1 `S284 1 . 1 0 ]
+[v _MDCONbits MDCONbits `VES292  1 e 1 @924 ]
+"23 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\main.c
+[v _multiplexed_counter multiplexed_counter `ul  1 e 4 0 ]
+"24
+[v _next_frame_counter next_frame_counter `ui  1 e 2 0 ]
+"25
+[v _var var `uc  1 e 1 0 ]
+"30
 [v _main main `(v  1 e 1 0 ]
 {
-"34
-[v main@var var `uc  1 a 1 3 ]
-"45
+"49
 } 0
 "22 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\user.c
 [v _InitApp InitApp `(v  1 e 1 0 ]
 {
-"69
+"78
 } 0
 "18 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
 {
 "31
 } 0
-"23 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
+"29 C:\Users\JAM\College\Semesters\Fall 2016\EE 496\Code\EE496\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"50
+"81
 } 0

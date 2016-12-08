@@ -3633,10 +3633,17 @@ typedef unsigned char bool;
 # 19 "system.h"
 void ConfigureOscillator(void);
 
-# 13 "user.h"
+# 16 "user.h"
 void InitApp(void);
 
-# 26 "main.c"
+# 23 "main.c"
+unsigned long multiplexed_counter = 0;
+unsigned int next_frame_counter = 0;
+unsigned char var = 0;
+
+
+
+
 void main(void)
 {
 
@@ -3645,15 +3652,15 @@ ConfigureOscillator();
 
 InitApp();
 
-unsigned char var = 0;
+
 
 while(1)
 {
 
 
 LATC = var;
-var++;
-_delay(100000);
+
+
 }
 
 }

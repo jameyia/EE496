@@ -4,6 +4,9 @@
 
 /* TODO Application specific user parameters used in user.c may go here */
 
+#define MULTIPLEX_LEDS 204800
+#define NEXT_FRAME 10000 // 10000 for 1HZ light sequencing
+
 /******************************************************************************/
 /* User Function Prototypes                                                   */
 /******************************************************************************/

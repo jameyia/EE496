@@ -1,4 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"343 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S27 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
+"353
+[s S28 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S28 . . T0IF . T0IE ]
+"342
+[u S26 `S27 1 `S28 1 ]
+[n S26 . . . ]
+"360
+[v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
+"26 interrupts.c
+[v _multiplexed_counter `ul ~T0 @X0 0 e ]
+"27
+[v _next_frame_counter `ui ~T0 @X0 0 e ]
+"25
+[v _var `uc ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2618,16 +2635,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[v F2691 `(v ~T0 @X0 1 tf ]
-"23 interrupts.c
-[v _isr `IF2691 ~T0 @X0 1 e ]
-"24
+[; ;user.h: 16: void InitApp(void);
+[; ;interrupts.c: 25: extern unsigned char var;
+[; ;interrupts.c: 26: extern unsigned long multiplexed_counter;
+[; ;interrupts.c: 27: extern unsigned int next_frame_counter;
+[v F2696 `(v ~T0 @X0 1 tf ]
+"29 interrupts.c
+[v _isr `IF2696 ~T0 @X0 1 e ]
+"30
 {
-[; ;interrupts.c: 23: void interrupt isr(void)
-[; ;interrupts.c: 24: {
+[; ;interrupts.c: 29: void interrupt isr(void)
+[; ;interrupts.c: 30: {
 [e :U _isr ]
 [f ]
-[; ;interrupts.c: 50: }
+[; ;interrupts.c: 36: if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+"36
+[e $ ! && == -> . . _INTCONbits 0 5 `i -> 1 `i == -> . . _INTCONbits 0 2 `i -> 1 `i 325  ]
+[; ;interrupts.c: 37: {
+"37
+{
+[; ;interrupts.c: 38: INTCONbits.TMR0IF = 0;
+"38
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;interrupts.c: 40: multiplexed_counter++;
+"40
+[e ++ _multiplexed_counter -> -> -> 1 `i `l `ul ]
+[; ;interrupts.c: 42: if(multiplexed_counter >= 204800)
+"42
+[e $ ! >= _multiplexed_counter -> -> 204800 `l `ul 326  ]
+[; ;interrupts.c: 43: {
+"43
+{
+[; ;interrupts.c: 46: multiplexed_counter = 0;
+"46
+[e = _multiplexed_counter -> -> -> 0 `i `l `ul ]
+[; ;interrupts.c: 47: next_frame_counter++;
+"47
+[e ++ _next_frame_counter -> -> 1 `i `ui ]
+[; ;interrupts.c: 49: if(next_frame_counter >= 10000)
+"49
+[e $ ! >= _next_frame_counter -> -> 10000 `i `ui 327  ]
+[; ;interrupts.c: 50: {
 "50
+{
+[; ;interrupts.c: 52: var++;
+"52
+[e ++ _var -> -> 1 `i `uc ]
+"53
+}
+[e :U 327 ]
+"54
+}
+[e :U 326 ]
+"57
+}
+[e :U 325 ]
+[; ;interrupts.c: 53: }
+[; ;interrupts.c: 54: }
+[; ;interrupts.c: 57: }
+[; ;interrupts.c: 81: }
+"81
 [e :UE 324 ]
 }

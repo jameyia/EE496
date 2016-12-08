@@ -2,14 +2,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "19 system.h
 [v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
-"13 user.h
+"16 user.h
 [v _InitApp `(v ~T0 @X0 0 ef ]
 "1942 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
 [v _LATC `Vuc ~T0 @X0 0 e@270 ]
-[v F2656 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic.h
-[v __delay `JF2656 ~T0 @X0 0 e ]
-[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2630,48 +2626,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;system.h: 19: void ConfigureOscillator(void);
-[; ;user.h: 13: void InitApp(void);
-"26 main.c
+[; ;user.h: 16: void InitApp(void);
+"23 main.c
+[v _multiplexed_counter `ul ~T0 @X0 1 e ]
+[i _multiplexed_counter
+-> -> -> 0 `i `l `ul
+]
+[; ;main.c: 23: unsigned long multiplexed_counter = 0;
+"24
+[v _next_frame_counter `ui ~T0 @X0 1 e ]
+[i _next_frame_counter
+-> -> 0 `i `ui
+]
+[; ;main.c: 24: unsigned int next_frame_counter = 0;
+"25
+[v _var `uc ~T0 @X0 1 e ]
+[i _var
+-> -> 0 `i `uc
+]
+[; ;main.c: 25: unsigned char var = 0;
+"30
 [v _main `(v ~T0 @X0 1 ef ]
-"27
+"31
 {
-[; ;main.c: 26: void main(void)
-[; ;main.c: 27: {
+[; ;main.c: 30: void main(void)
+[; ;main.c: 31: {
 [e :U _main ]
 [f ]
-[; ;main.c: 29: ConfigureOscillator();
-"29
+[; ;main.c: 33: ConfigureOscillator();
+"33
 [e ( _ConfigureOscillator ..  ]
-[; ;main.c: 32: InitApp();
-"32
-[e ( _InitApp ..  ]
-"34
-[v _var `uc ~T0 @X0 1 a ]
-[; ;main.c: 34: unsigned char var = 0;
-[e = _var -> -> 0 `i `uc ]
-[; ;main.c: 36: while(1)
+[; ;main.c: 36: InitApp();
 "36
-[e :U 326 ]
-[; ;main.c: 37: {
-"37
-{
-[; ;main.c: 40: LATC = var;
+[e ( _InitApp ..  ]
+[; ;main.c: 40: while(1)
 "40
-[e = _LATC _var ]
-[; ;main.c: 41: var++;
+[e :U 326 ]
+[; ;main.c: 41: {
 "41
-[e ++ _var -> -> 1 `i `uc ]
-[; ;main.c: 42: _delay(100000);
-"42
-[e ( __delay (1 -> -> 100000 `l `ul ]
-"43
+{
+[; ;main.c: 44: LATC = var;
+"44
+[e = _LATC _var ]
+"47
 }
 [e :U 325 ]
-"36
+"40
 [e $U 326  ]
 [e :U 327 ]
-[; ;main.c: 43: }
-[; ;main.c: 45: }
-"45
+[; ;main.c: 47: }
+[; ;main.c: 49: }
+"49
 [e :UE 324 ]
 }
