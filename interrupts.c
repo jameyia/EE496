@@ -23,7 +23,7 @@
 #ifndef _PIC12
 
 extern unsigned char var;
-extern unsigned long multiplexed_counter;
+extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
 
 void interrupt isr(void)
@@ -37,14 +37,12 @@ void interrupt isr(void)
     {
         INTCONbits.TMR0IF = 0; // clear interrupt flag
         
-        LATC = 0b0010;
-        
         multiplexed_counter++;
+        
         
         if(multiplexed_counter >= MULTIPLEX_LEDS)
         {
             // MULTIPLEX / SHIFT OUT DATA!!!
-            
             multiplexed_counter = 0;
             next_frame_counter++;
             

@@ -3637,9 +3637,9 @@ void ConfigureOscillator(void);
 void InitApp(void);
 
 # 23 "main.c"
-unsigned long multiplexed_counter = 0;
+unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
-unsigned char var = 0b00001111;
+unsigned char var = 0b0;
 
 
 
@@ -3653,11 +3653,14 @@ ConfigureOscillator();
 InitApp();
 
 
-LATC = 0b0001;
+
 while(1)
 {
 
-# 47
+
+LATC = var;
+
+
 }
 
 }

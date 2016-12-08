@@ -2628,11 +2628,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;user.h: 16: void InitApp(void);
 "23 main.c
-[v _multiplexed_counter `ul ~T0 @X0 1 e ]
+[v _multiplexed_counter `ui ~T0 @X0 1 e ]
 [i _multiplexed_counter
--> -> -> 0 `i `l `ul
+-> -> 0 `i `ui
 ]
-[; ;main.c: 23: unsigned long multiplexed_counter = 0;
+[; ;main.c: 23: unsigned int multiplexed_counter = 0;
 "24
 [v _next_frame_counter `ui ~T0 @X0 1 e ]
 [i _next_frame_counter
@@ -2642,9 +2642,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [v _var `uc ~T0 @X0 1 e ]
 [i _var
--> -> 15 `i `uc
+-> -> 0 `i `uc
 ]
-[; ;main.c: 25: unsigned char var = 0b00001111;
+[; ;main.c: 25: unsigned char var = 0b0;
 "30
 [v _main `(v ~T0 @X0 1 ef ]
 "31
@@ -2659,15 +2659,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 36: InitApp();
 "36
 [e ( _InitApp ..  ]
-[; ;main.c: 39: LATC = 0b0001;
-"39
-[e = _LATC -> -> 1 `i `uc ]
 [; ;main.c: 40: while(1)
 "40
 [e :U 326 ]
 [; ;main.c: 41: {
 "41
 {
+[; ;main.c: 44: LATC = var;
+"44
+[e = _LATC _var ]
 "47
 }
 [e :U 325 ]

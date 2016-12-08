@@ -2590,7 +2590,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
 "36 configuration_bits.c
-[p x FOSC=ECH ]
+[p x FOSC=INTOSC ]
 "37
 [p x WDTE=OFF ]
 "38
@@ -2618,4 +2618,4 @@ Version 3.2 HI-TECH Software Intermediate Code
 "51
 [p x BORV=LO ]
 "52
-[p x LVP=ON ]
+[p x LVP=OFF ]

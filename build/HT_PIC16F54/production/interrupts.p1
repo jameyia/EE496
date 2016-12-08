@@ -10,10 +10,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
-"1942
-[v _LATC `Vuc ~T0 @X0 0 e@270 ]
 "26 interrupts.c
-[v _multiplexed_counter `ul ~T0 @X0 0 e ]
+[v _multiplexed_counter `ui ~T0 @X0 0 e ]
 "27
 [v _next_frame_counter `ui ~T0 @X0 0 e ]
 "25
@@ -2639,7 +2637,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;user.h: 16: void InitApp(void);
 [; ;interrupts.c: 25: extern unsigned char var;
-[; ;interrupts.c: 26: extern unsigned long multiplexed_counter;
+[; ;interrupts.c: 26: extern unsigned int multiplexed_counter;
 [; ;interrupts.c: 27: extern unsigned int next_frame_counter;
 [v F2696 `(v ~T0 @X0 1 tf ]
 "29 interrupts.c
@@ -2659,49 +2657,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 38: INTCONbits.TMR0IF = 0;
 "38
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 40: LATC = 0b0010;
+[; ;interrupts.c: 40: multiplexed_counter++;
 "40
-[e = _LATC -> -> 2 `i `uc ]
-[; ;interrupts.c: 42: multiplexed_counter++;
-"42
-[e ++ _multiplexed_counter -> -> -> 1 `i `l `ul ]
-[; ;interrupts.c: 44: if(multiplexed_counter >= 204800)
+[e ++ _multiplexed_counter -> -> 1 `i `ui ]
+[; ;interrupts.c: 43: if(multiplexed_counter >= 10)
+"43
+[e $ ! >= _multiplexed_counter -> -> 10 `i `ui 326  ]
+[; ;interrupts.c: 44: {
 "44
-[e $ ! >= _multiplexed_counter -> -> 204800 `l `ul 326  ]
-[; ;interrupts.c: 45: {
-"45
 {
-[; ;interrupts.c: 48: multiplexed_counter = 0;
-"48
-[e = _multiplexed_counter -> -> -> 0 `i `l `ul ]
-[; ;interrupts.c: 49: next_frame_counter++;
-"49
+[; ;interrupts.c: 46: multiplexed_counter = 0;
+"46
+[e = _multiplexed_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 47: next_frame_counter++;
+"47
 [e ++ _next_frame_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 51: if(next_frame_counter >= 10000)
-"51
-[e $ ! >= _next_frame_counter -> -> 10000 `i `ui 327  ]
-[; ;interrupts.c: 52: {
-"52
+[; ;interrupts.c: 49: if(next_frame_counter >= 3200)
+"49
+[e $ ! >= _next_frame_counter -> -> 3200 `i `ui 327  ]
+[; ;interrupts.c: 50: {
+"50
 {
-[; ;interrupts.c: 54: next_frame_counter = 0;
-"54
+[; ;interrupts.c: 52: next_frame_counter = 0;
+"52
 [e = _next_frame_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 55: var++;
-"55
+[; ;interrupts.c: 53: var++;
+"53
 [e ++ _var -> -> 1 `i `uc ]
-"56
+"54
 }
 [e :U 327 ]
-"57
+"55
 }
 [e :U 326 ]
-"60
+"58
 }
 [e :U 325 ]
-[; ;interrupts.c: 56: }
-[; ;interrupts.c: 57: }
-[; ;interrupts.c: 60: }
-[; ;interrupts.c: 84: }
-"84
+[; ;interrupts.c: 54: }
+[; ;interrupts.c: 55: }
+[; ;interrupts.c: 58: }
+[; ;interrupts.c: 82: }
+"82
 [e :UE 324 ]
 }
