@@ -16,6 +16,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _next_frame_counter `ui ~T0 @X0 0 e ]
 "25
 [v _var `uc ~T0 @X0 0 e ]
+"3311 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
+"1948
+[s S104 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S104 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"1947
+[u S103 `S104 1 ]
+[n S103 . . ]
+"1957
+[v _LATCbits `VS103 ~T0 @X0 0 e@270 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2672,31 +2682,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 47: next_frame_counter++;
 "47
 [e ++ _next_frame_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 49: if(next_frame_counter >= 3200)
-"49
+[; ;interrupts.c: 51: if(next_frame_counter >= 3200)
+"51
 [e $ ! >= _next_frame_counter -> -> 3200 `i `ui 327  ]
-[; ;interrupts.c: 50: {
-"50
-{
-[; ;interrupts.c: 52: next_frame_counter = 0;
+[; ;interrupts.c: 52: {
 "52
-[e = _next_frame_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 53: var++;
-"53
-[e ++ _var -> -> 1 `i `uc ]
+{
+[; ;interrupts.c: 54: next_frame_counter = 0;
 "54
+[e = _next_frame_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 55: var++;
+"55
+[e ++ _var -> -> 1 `i `uc ]
+[; ;interrupts.c: 58: SSP1BUF = var;
+"58
+[e = _SSP1BUF _var ]
+[; ;interrupts.c: 59: LATCbits.LATC5 = 1;
+"59
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;interrupts.c: 60: LATCbits.LATC5 = 0;
+"60
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+"62
 }
 [e :U 327 ]
-"55
+"63
 }
 [e :U 326 ]
-"58
+"66
 }
 [e :U 325 ]
-[; ;interrupts.c: 54: }
-[; ;interrupts.c: 55: }
-[; ;interrupts.c: 58: }
-[; ;interrupts.c: 82: }
-"82
+[; ;interrupts.c: 62: }
+[; ;interrupts.c: 63: }
+[; ;interrupts.c: 66: }
+[; ;interrupts.c: 90: }
+"90
 [e :UE 324 ]
 }

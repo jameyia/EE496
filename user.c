@@ -31,7 +31,7 @@ void InitApp(void)
     // PORT C
     WPUC = 0x00;
     INLVLC = 0x00;
-    LATC = 0x0;
+    LATC = 0x00;
     
     IOCAP = 0x00; // Disable all IOC capability (pg 137)
     IOCAN = 0x00; // Disable all IOC capability (pg 138)
@@ -43,7 +43,7 @@ void InitApp(void)
     TRISA = 0x00;
     ANSELA = 0x00; // Disable all analog input functionality.
     
-    TRISC = 0x00;
+    TRISC = 0b001010;
     ANSELC = 0x00;
     
     ADCON0bits.ADON = 0b0; // Disable ADC
@@ -59,8 +59,8 @@ void InitApp(void)
     CPSCON0bits.CPSON = 0b0; // Disable Capacitive Sensing Module
     
     
-    
-    
+    APFCON0bits.SDOSEL = 0b0; // SDO1 is on RC2
+    APFCON0bits.SSSEL = 0b0; // 'SS1 is on RC3
     
     /* Initialize peripherals */
     
@@ -69,11 +69,19 @@ void InitApp(void)
     OPTION_REGbits.TMR0CS = 0b0; // Internal Clock (Fosc/4)
     OPTION_REGbits.PSA = 0b1; //No Prescaler
     
+    // MSSP1
+    SSP1STATbits.CKE = 0b0; //Transmit occurs on transition from ide to active clock state
+    
+    SSP1CON1bits.SSPEN = 0b1; // Enable MSSP
+    SSP1CON1bits.CKP = 0b0; // low level is idle state for clock
+    SSP1CON1bits.SSPM = 0b0000; // Clcok is Fosc/4 = 8MHz
     
     
 
     /* Enable interrupts */
     INTCONbits.GIE = 0b1; // Enable interrupts
     INTCONbits.TMR0IE = 0b1; // Enable Timer 0 interrupt
+    INTCONbits.PEIE = 0b1; // Enable Peripheral interrupt bits
+    PIE1bits.SSP1IE = 0b1; // Enable MSSP
 }
 

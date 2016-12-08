@@ -3655,17 +3655,25 @@ if(multiplexed_counter >= 10)
 multiplexed_counter = 0;
 next_frame_counter++;
 
+
+
 if(next_frame_counter >= 3200)
 {
 
 next_frame_counter = 0;
 var++;
+
+
+SSP1BUF = var;
+LATCbits.LATC5 = 1;
+LATCbits.LATC5 = 0;
+
 }
 }
 
 
 }
 
-# 82
+# 90
 }
 

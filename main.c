@@ -22,7 +22,7 @@
 
 unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
-unsigned char var = 0b0;
+unsigned char var = 0x00;
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -36,14 +36,17 @@ void main(void)
     InitApp();
     
     
-    //LATC = 0b0001;
+    
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
         
-        LATC = var;
-        //var++;
-        //_delay(100000);
+        //LATC = var;
+        /*
+        SSP1BUF = var;
+        LATCbits.LATC5 = 1;
+        LATCbits.LATC5 = 0;
+         * */
     }
 
 }

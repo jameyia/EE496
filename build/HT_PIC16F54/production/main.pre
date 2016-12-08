@@ -3639,7 +3639,7 @@ void InitApp(void);
 # 23 "main.c"
 unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
-unsigned char var = 0b0;
+unsigned char var = 0x00;
 
 
 
@@ -3657,10 +3657,7 @@ InitApp();
 while(1)
 {
 
-
-LATC = var;
-
-
+# 50
 }
 
 }

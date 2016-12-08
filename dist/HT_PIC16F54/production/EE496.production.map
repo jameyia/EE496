@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.38\dat\en_msgs.txt -cs \
   -h+dist/HT_PIC16F54/production\EE496.production.sym \
   --cmf=dist/HT_PIC16F54/production\EE496.production.cmf -z -Q16F1825 \
-  -oC:\Users\JAM\AppData\Local\Temp\s4ks.2 \
+  -oC:\Users\JAM\AppData\Local\Temp\s6sk.2 \
   -Mdist/HT_PIC16F54/production/EE496.production.map -E1 -ver=XC8 \
   -ASTACK=02000h-023efh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -32,7 +32,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\JAM\AppData\Local\Temp\s4ks.obj \
+  C:\Users\JAM\AppData\Local\Temp\s6sk.obj \
   dist/HT_PIC16F54/production\EE496.production.obj 
 
 Object code version is 3.11
@@ -42,16 +42,16 @@ Machine type is 16F1825
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\JAM\AppData\Local\Temp\s4ks.obj
-                end_init                             2F       2F        2        8       0
+C:\Users\JAM\AppData\Local\Temp\s6sk.obj
+                end_init                             36       36        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
 dist/HT_PIC16F54/production\EE496.production.obj
-                cinit                                31       31        9        8       0
-                intentry                              4        4       2B        8       0
-                text2                                71       71        8        8       0
-                text1                                3A       3A       2D        8       0
-                maintext                             67       67        A        8       0
+                cinit                                38       38        9        8       0
+                intentry                              4        4       32        8       0
+                text2                                7B       7B        8        8       0
+                text1                                41       41       3A        8       0
+                maintext                             83       83        7        8       0
                 cstackCOMMON                         75       75        2       70       1
                 bssCOMMON                            70       70        5       70       1
 
@@ -59,13 +59,13 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   STACK          
 
         CLASS   CODE           
-                end_init                             2F       2F        2         0
-                cinit                                31       31        9         0
-                intentry                              4        4       2B         0
+                end_init                             36       36        2         0
+                cinit                                38       38        9         0
+                intentry                              4        4       32         0
                 reset_vec                             0        0        2         0
-                text2                                71       71        8         0
-                text1                                3A       3A       2D         0
-                maintext                             67       67        A         0
+                text2                                7B       7B        8         0
+                text1                                41       41       3A         0
+                maintext                             83       83        7         0
 
         CLASS   STRCODE        
 
@@ -226,7 +226,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
-                intentry                       000004  000075  000079         8       0  CODE        2
+                intentry                       000004  000086  00008A         8       0  CODE        2
                 bssCOMMON                      000070  000007  000077        70       1  COMMON      1
                 config                         008007  000002  008009     1000E       0  CONFIG      2
 
@@ -249,13 +249,13 @@ UNUSED ADDRESS RANGES
         BANK9            004A0-004EF              50           1
         BIGRAM           02000-023EF             3F0           1
         CODE             00002-00003               2           2
-                         00079-01FFF             800
+                         0008A-01FFF             800
         COMMON           00077-0007D               7           1
         CONST            00002-00003               2           2
-                         00079-01FFF             100
+                         0008A-01FFF             100
         EEDATA           0F000-0F0FF             100           2
         ENTRY            00002-00003               2           2
-                         00079-01FFF             100
+                         0008A-01FFF             100
         IDLOC            08000-08003               4           2
         RAM              00020-0006F              50           1
                          000A0-000EF              50
@@ -304,19 +304,20 @@ UNUSED ADDRESS RANGES
         SFR9             00480-0049F              20           1
         STACK            02000-023EF             3F0           1
         STRCODE          00002-00003               2           2
-                         00079-01FFF            1F87
+                         0008A-01FFF            1F76
         STRING           00002-00003               2           2
-                         00079-01FFF             100
+                         0008A-01FFF             100
 
                                   Symbol Table
 
 _ADCON0bits                   (abs)        0009D
 _ANSELA                       (abs)        0018C
 _ANSELC                       (abs)        0018E
+_APFCON0bits                  (abs)        0011D
 _CM1CON0bits                  (abs)        00111
 _CM2CON0bits                  (abs)        00113
 _CPSCON0bits                  (abs)        0001E
-_ConfigureOscillator          text2        00071
+_ConfigureOscillator          text2        0007B
 _DACCON0bits                  (abs)        00118
 _FVRCONbits                   (abs)        00117
 _INLVLA                       (abs)        0038C
@@ -324,13 +325,18 @@ _INLVLC                       (abs)        0038E
 _INTCONbits                   (abs)        0000B
 _IOCAN                        (abs)        00392
 _IOCAP                        (abs)        00391
-_InitApp                      text1        0003A
+_InitApp                      text1        00041
 _LATA                         (abs)        0010C
 _LATC                         (abs)        0010E
+_LATCbits                     (abs)        0010E
 _MDCONbits                    (abs)        0039C
 _OPTION_REGbits               (abs)        00095
 _OSCCONbits                   (abs)        00099
+_PIE1bits                     (abs)        00091
 _SRCON0bits                   (abs)        0011A
+_SSP1BUF                      (abs)        00211
+_SSP1CON1bits                 (abs)        00215
+_SSP1STATbits                 (abs)        00214
 _TRISA                        (abs)        0008C
 _TRISC                        (abs)        0008E
 _WPUA                         (abs)        0020C
@@ -385,18 +391,18 @@ __Hbank8                      bank8        00000
 __Hbank9                      bank9        00000
 __Hbigram                     bigram       00000
 __HbssCOMMON                  bssCOMMON    00000
-__Hcinit                      cinit        0003A
+__Hcinit                      cinit        00041
 __Hclrtext                    clrtext      00000
 __Hcode                       code         00000
 __Hcommon                     common       00000
 __Hconfig                     config       08009
 __HcstackCOMMON               cstackCOMMON 00000
 __Heeprom_data                eeprom_data  00000
-__Hend_init                   end_init     00031
+__Hend_init                   end_init     00038
 __Hfunctab                    functab      00000
 __Hidloc                      idloc        00000
-__Hinit                       init         0002F
-__Hintentry                   intentry     0002F
+__Hinit                       init         00036
+__Hintentry                   intentry     00036
 __Hmaintext                   maintext     00000
 __Hpowerup                    powerup      00000
 __Hram                        ram          00000
@@ -475,17 +481,17 @@ __Lbank8                      bank8        00000
 __Lbank9                      bank9        00000
 __Lbigram                     bigram       00000
 __LbssCOMMON                  bssCOMMON    00000
-__Lcinit                      cinit        00031
+__Lcinit                      cinit        00038
 __Lclrtext                    clrtext      00000
 __Lcode                       code         00000
 __Lcommon                     common       00000
 __Lconfig                     config       08007
 __LcstackCOMMON               cstackCOMMON 00000
 __Leeprom_data                eeprom_data  00000
-__Lend_init                   end_init     0002F
+__Lend_init                   end_init     00036
 __Lfunctab                    functab      00000
 __Lidloc                      idloc        00000
-__Linit                       init         0002F
+__Linit                       init         00036
 __Lintentry                   intentry     00004
 __Lmaintext                   maintext     00000
 __Lpowerup                    powerup      00000
@@ -537,29 +543,29 @@ __S3                          (abs)        00000
 ___int_sp                     stack        00000
 ___latbits                    (abs)        00002
 ___sp                         stack        00000
-__end_of_ConfigureOscillator  text2        00079
-__end_of_InitApp              text1        00067
-__end_of__initialization      cinit        00036
-__end_of_isr                  intentry     0002F
-__end_of_main                 maintext     00071
-__initialization              cinit        00031
+__end_of_ConfigureOscillator  text2        00083
+__end_of_InitApp              text1        0007B
+__end_of__initialization      cinit        0003D
+__end_of_isr                  intentry     00036
+__end_of_main                 maintext     0008A
+__initialization              cinit        00038
 __pbssCOMMON                  bssCOMMON    00070
 __pcstackCOMMON               cstackCOMMON 00075
 __pintentry                   intentry     00004
-__pmaintext                   maintext     00067
-__ptext1                      text1        0003A
-__ptext2                      text2        00071
+__pmaintext                   maintext     00083
+__ptext1                      text1        00041
+__ptext2                      text2        0007B
 __size_of_ConfigureOscillator (abs)        00000
 __size_of_InitApp             (abs)        00000
 __size_of_isr                 (abs)        00000
 __size_of_main                (abs)        00000
 _isr                          intentry     00004
-_main                         maintext     00067
+_main                         maintext     00083
 _multiplexed_counter          bssCOMMON    00070
 _next_frame_counter           bssCOMMON    00072
 _var                          bssCOMMON    00074
 btemp                         (abs)        0007E
-end_of_initialization         cinit        00036
+end_of_initialization         cinit        0003D
 int$flags                     (abs)        0007E
 intlevel0                     functab      00000
 intlevel1                     functab      00000
@@ -575,8 +581,8 @@ ltemp3                        (abs)        00080
 reset_vec                     reset_vec    00000
 stackhi                       (abs)        023EF
 stacklo                       (abs)        02000
-start                         init         0002F
-start_initialization          cinit        00031
+start                         init         00036
+start_initialization          cinit        00038
 ttemp                         (abs)        0007E
 ttemp0                        (abs)        0007E
 ttemp1                        (abs)        00081
@@ -635,7 +641,7 @@ Total ram usage:        0 bytes
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
-		status,2
+		wreg, status,2, status,0
  Tracked objects:
 		On entry : 
 		On exit  : 
@@ -719,27 +725,27 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 interrupts.c
-		_isr           		CODE           	0004	0000	44
+		_isr           		CODE           	0004	0000	51
 
-interrupts.c estimated size: 44
+interrupts.c estimated size: 51
 
 shared
-		__initialization		CODE           	0031	0000	6
+		__initialization		CODE           	0038	0000	6
 
 shared estimated size: 6
 
 user.c
-		_InitApp       		CODE           	003A	0000	46
+		_InitApp       		CODE           	0041	0000	59
 
-user.c estimated size: 46
+user.c estimated size: 59
 
 main.c
-		_main          		CODE           	0067	0000	11
+		_main          		CODE           	0083	0000	8
 
-main.c estimated size: 11
+main.c estimated size: 8
 
 system.c
-		_ConfigureOscillator		CODE           	0071	0000	9
+		_ConfigureOscillator		CODE           	007B	0000	9
 
 system.c estimated size: 9
 

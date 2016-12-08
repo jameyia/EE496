@@ -3646,7 +3646,7 @@ LATA = 0x00;
 
 WPUC = 0x00;
 INLVLC = 0x00;
-LATC = 0x0;
+LATC = 0x00;
 
 IOCAP = 0x00;
 IOCAN = 0x00;
@@ -3658,7 +3658,7 @@ FVRCONbits.TSEN = 0b0;
 TRISA = 0x00;
 ANSELA = 0x00;
 
-TRISC = 0x00;
+TRISC = 0b001010;
 ANSELC = 0x00;
 
 ADCON0bits.ADON = 0b0;
@@ -3673,13 +3673,30 @@ CM2CON0bits.C2ON = 0b0;
 MDCONbits.MDEN = 0b0;
 CPSCON0bits.CPSON = 0b0;
 
-# 68
+
+APFCON0bits.SDOSEL = 0b0;
+APFCON0bits.SSSEL = 0b0;
+
+
+
+
 OPTION_REGbits.nWPUEN = 0b1;
 OPTION_REGbits.TMR0CS = 0b0;
 OPTION_REGbits.PSA = 0b1;
 
-# 76
+
+SSP1STATbits.CKE = 0b0;
+
+SSP1CON1bits.SSPEN = 0b1;
+SSP1CON1bits.CKP = 0b0;
+SSP1CON1bits.SSPM = 0b0000;
+
+
+
+
 INTCONbits.GIE = 0b1;
 INTCONbits.TMR0IE = 0b1;
+INTCONbits.PEIE = 0b1;
+PIE1bits.SSP1IE = 0b1;
 }
 

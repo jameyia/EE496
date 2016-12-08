@@ -46,11 +46,19 @@ void interrupt isr(void)
             multiplexed_counter = 0;
             next_frame_counter++;
             
+            
+            
             if(next_frame_counter >= NEXT_FRAME)
             {
                 // UPDATE FRAME
                 next_frame_counter = 0;
                 var++;
+                
+                
+                SSP1BUF = var;
+                LATCbits.LATC5 = 1;
+                LATCbits.LATC5 = 0;
+                
             }
         }
         

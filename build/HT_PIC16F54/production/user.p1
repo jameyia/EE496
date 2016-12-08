@@ -105,6 +105,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S58 . . . ]
 "993
 [v _CPSCON0bits `VS58 ~T0 @X0 0 e@30 ]
+"2597
+[s S134 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S134 . . TXCKSEL T1GSEL . SSSEL SDOSEL RXDTSEL ]
+"2596
+[u S133 `S134 1 ]
+[n S133 . . ]
+"2607
+[v _APFCON0bits `VS133 ~T0 @X0 0 e@285 ]
 "1331
 [s S75 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S75 . PS0 PS1 PS2 PSA TMR0SE TMR0CS INTEDG nWPUEN ]
@@ -116,6 +124,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S74 . . . ]
 "1348
 [v _OPTION_REGbits `VS74 ~T0 @X0 0 e@149 ]
+"3433
+[s S189 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S189 . BF UA R_nW S P D_nA CKE SMP ]
+"3432
+[u S188 `S189 1 ]
+[n S188 . . ]
+"3444
+[v _SSP1STATbits `VS188 ~T0 @X0 0 e@532 ]
+"3558
+[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S193 . SSPM0 SSPM1 SSPM2 SSPM3 CKP SSPEN SSPOV WCOL ]
+"3568
+[s S194 :4 `uc 1 ]
+[n S194 . SSPM ]
+"3557
+[u S192 `S193 1 `S194 1 ]
+[n S192 . . . ]
+"3572
+[v _SSP1CON1bits `VS192 ~T0 @X0 0 e@533 ]
 "343
 [s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S27 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
@@ -127,6 +154,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
+"1181
+[s S69 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S69 . TMR1IE TMR2IE CCP1IE SSP1IE TXIE RCIE ADIE TMR1GIE ]
+"1180
+[u S68 `S69 1 ]
+[n S68 . . ]
+"1192
+[v _PIE1bits `VS68 ~T0 @X0 0 e@145 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2770,7 +2805,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 33: INLVLC = 0x00;
 "33
 [e = _INLVLC -> -> 0 `i `uc ]
-[; ;user.c: 34: LATC = 0x0;
+[; ;user.c: 34: LATC = 0x00;
 "34
 [e = _LATC -> -> 0 `i `uc ]
 [; ;user.c: 36: IOCAP = 0x00;
@@ -2791,9 +2826,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 44: ANSELA = 0x00;
 "44
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;user.c: 46: TRISC = 0x00;
+[; ;user.c: 46: TRISC = 0b001010;
 "46
-[e = _TRISC -> -> 0 `i `uc ]
+[e = _TRISC -> -> 10 `i `uc ]
 [; ;user.c: 47: ANSELC = 0x00;
 "47
 [e = _ANSELC -> -> 0 `i `uc ]
@@ -2821,6 +2856,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 59: CPSCON0bits.CPSON = 0b0;
 "59
 [e = . . _CPSCON0bits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 62: APFCON0bits.SDOSEL = 0b0;
+"62
+[e = . . _APFCON0bits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 63: APFCON0bits.SSSEL = 0b0;
+"63
+[e = . . _APFCON0bits 0 4 -> -> 0 `i `uc ]
 [; ;user.c: 68: OPTION_REGbits.nWPUEN = 0b1;
 "68
 [e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
@@ -2830,13 +2871,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 70: OPTION_REGbits.PSA = 0b1;
 "70
 [e = . . _OPTION_REGbits 0 3 -> -> 1 `i `uc ]
-[; ;user.c: 76: INTCONbits.GIE = 0b1;
+[; ;user.c: 73: SSP1STATbits.CKE = 0b0;
+"73
+[e = . . _SSP1STATbits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 75: SSP1CON1bits.SSPEN = 0b1;
+"75
+[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 76: SSP1CON1bits.CKP = 0b0;
 "76
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;user.c: 77: INTCONbits.TMR0IE = 0b1;
+[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 77: SSP1CON1bits.SSPM = 0b0000;
 "77
+[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
+[; ;user.c: 82: INTCONbits.GIE = 0b1;
+"82
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 83: INTCONbits.TMR0IE = 0b1;
+"83
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;user.c: 78: }
-"78
+[; ;user.c: 84: INTCONbits.PEIE = 0b1;
+"84
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;user.c: 85: PIE1bits.SSP1IE = 0b1;
+"85
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+[; ;user.c: 86: }
+"86
 [e :UE 324 ]
 }
