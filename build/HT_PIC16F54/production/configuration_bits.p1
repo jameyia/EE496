@@ -2592,7 +2592,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "36 configuration_bits.c
 [p x FOSC=ECH ]
 "37
-[p x WDTE=ON ]
+[p x WDTE=OFF ]
 "38
 [p x PWRTE=OFF ]
 "39

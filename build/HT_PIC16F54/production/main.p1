@@ -2642,9 +2642,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [v _var `uc ~T0 @X0 1 e ]
 [i _var
--> -> 0 `i `uc
+-> -> 15 `i `uc
 ]
-[; ;main.c: 25: unsigned char var = 0;
+[; ;main.c: 25: unsigned char var = 0b00001111;
 "30
 [v _main `(v ~T0 @X0 1 ef ]
 "31
@@ -2659,15 +2659,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 36: InitApp();
 "36
 [e ( _InitApp ..  ]
+[; ;main.c: 39: LATC = 0b0001;
+"39
+[e = _LATC -> -> 1 `i `uc ]
 [; ;main.c: 40: while(1)
 "40
 [e :U 326 ]
 [; ;main.c: 41: {
 "41
 {
-[; ;main.c: 44: LATC = var;
-"44
-[e = _LATC _var ]
 "47
 }
 [e :U 325 ]

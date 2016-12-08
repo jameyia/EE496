@@ -3540,7 +3540,7 @@ extern __bit __timeout;
 
 # 36 "configuration_bits.c"
 #pragma config FOSC = ECH
-#pragma config WDTE = ON
+#pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = ON
 #pragma config CP = OFF
@@ -3556,4 +3556,3 @@ extern __bit __timeout;
 #pragma config STVREN = ON
 #pragma config BORV = LO
 #pragma config LVP = ON
-

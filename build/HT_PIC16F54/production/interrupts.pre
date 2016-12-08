@@ -3646,6 +3646,8 @@ if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
 {
 INTCONbits.TMR0IF = 0;
 
+LATC = 0b0010;
+
 multiplexed_counter++;
 
 if(multiplexed_counter >= 204800)
@@ -3658,6 +3660,7 @@ next_frame_counter++;
 if(next_frame_counter >= 10000)
 {
 
+next_frame_counter = 0;
 var++;
 }
 }
@@ -3665,6 +3668,6 @@ var++;
 
 }
 
-# 81
+# 84
 }
 

@@ -37,6 +37,8 @@ void interrupt isr(void)
     {
         INTCONbits.TMR0IF = 0; // clear interrupt flag
         
+        LATC = 0b0010;
+        
         multiplexed_counter++;
         
         if(multiplexed_counter >= MULTIPLEX_LEDS)
@@ -49,6 +51,7 @@ void interrupt isr(void)
             if(next_frame_counter >= NEXT_FRAME)
             {
                 // UPDATE FRAME
+                next_frame_counter = 0;
                 var++;
             }
         }
