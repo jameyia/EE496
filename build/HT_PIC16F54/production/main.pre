@@ -3633,19 +3633,26 @@ typedef unsigned char bool;
 # 19 "system.h"
 void ConfigureOscillator(void);
 
-# 16 "user.h"
+# 17 "user.h"
 void InitApp(void);
+
+void write_leds();
+
+void update_fade();
+
+void get_next_frame();
 
 # 23 "main.c"
 unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
+unsigned int fade_frame_counter = 1;
 unsigned char clear_buffer_flag = 0x00;
-unsigned short long current_frame = 0x000000;
+
+unsigned short long fade_frame = 0x000000;
 unsigned int multiplexed_segment_counter = 0;
+unsigned char current_frame[18] = {8,7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0};
 
-
-
-
+# 36
 void main(void)
 {
 
@@ -3654,10 +3661,8 @@ ConfigureOscillator();
 
 InitApp();
 
-# 57
 while(1)
 {
-
 
 
 }

@@ -25,7 +25,9 @@
 extern unsigned char clear_buffer_flag;
 extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
-extern unsigned short long current_frame;
+extern unsigned int fade_frame_counter;
+//extern unsigned short long current_frame;
+extern unsigned short long fade_frame;
 extern unsigned int multiplexed_segment_counter;
 
 void interrupt isr(void)
@@ -47,14 +49,7 @@ void interrupt isr(void)
             
             
             // Shift out data
-            SSP1BUF = 1 << multiplexed_segment_counter;
-            while(SSP1STATbits.BF == 0);
-            clear_buffer_flag = SSP1BUF;
-            SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
-            while(SSP1STATbits.BF == 0);
-            clear_buffer_flag = SSP1BUF;
-            LATCbits.LATC5 = 1;
-            LATCbits.LATC5 = 0;
+            write_leds();
             
             next_frame_counter++;
             multiplexed_segment_counter++;
@@ -62,6 +57,15 @@ void interrupt isr(void)
             if(multiplexed_segment_counter > 2)
             {
                 multiplexed_segment_counter = 0;
+                
+                if(fade_frame_counter> FADE_RESOLUTION)
+                {
+                    fade_frame_counter = 1;
+                }
+                
+                update_fade();
+                
+                fade_frame_counter++;
             }
             
             
@@ -70,7 +74,7 @@ void interrupt isr(void)
                 // UPDATE FRAME
                 next_frame_counter = 0;
                 
-                current_frame = (current_frame << 1) + 1;
+                get_next_frame();
             }
             
             

@@ -3630,20 +3630,28 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
 
-# 16 "user.h"
+# 17 "user.h"
 void InitApp(void);
+
+void write_leds();
+
+void update_fade();
+
+void get_next_frame();
 
 # 25 "interrupts.c"
 extern unsigned char clear_buffer_flag;
 extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
-extern unsigned short long current_frame;
+extern unsigned int fade_frame_counter;
+
+extern unsigned short long fade_frame;
 extern unsigned int multiplexed_segment_counter;
 
 void interrupt isr(void)
 {
 
-# 38
+# 40
 if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
 {
 multiplexed_counter++;
@@ -3656,14 +3664,7 @@ multiplexed_counter = 0;
 
 
 
-SSP1BUF = 1 << multiplexed_segment_counter;
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-LATCbits.LATC5 = 1;
-LATCbits.LATC5 = 0;
+write_leds();
 
 next_frame_counter++;
 multiplexed_segment_counter++;
@@ -3671,15 +3672,24 @@ multiplexed_segment_counter++;
 if(multiplexed_segment_counter > 2)
 {
 multiplexed_segment_counter = 0;
+
+if(fade_frame_counter> 8)
+{
+fade_frame_counter = 1;
+}
+
+update_fade();
+
+fade_frame_counter++;
 }
 
 
-if(next_frame_counter >= 1600)
+if(next_frame_counter >= 200)
 {
 
 next_frame_counter = 0;
 
-current_frame = (current_frame << 1) + 1;
+get_next_frame();
 }
 
 
@@ -3688,6 +3698,6 @@ current_frame = (current_frame << 1) + 1;
 INTCONbits.TMR0IF = 0;
 }
 
-# 104
+# 108
 }
 

@@ -154,6 +154,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
+"3311
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
+"28 user.c
+[v _multiplexed_segment_counter `ui ~T0 @X0 0 e ]
+"22
+[v _clear_buffer_flag `uc ~T0 @X0 0 e ]
+"27
+[v _fade_frame `um ~T0 @X0 0 e ]
+"1948 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[s S104 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S104 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"1947
+[u S103 `S104 1 ]
+[n S103 . . ]
+"1957
+[v _LATCbits `VS103 ~T0 @X0 0 e@270 ]
+"26 user.c
+[v _current_frame `uc ~T0 @X0 -> 0 `x e ]
+"25
+[v _fade_frame_counter `ui ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2773,118 +2793,280 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;user.h: 16: void InitApp(void);
-"22 user.c
+[; ;user.h: 17: void InitApp(void);
+[; ;user.h: 19: void write_leds();
+[; ;user.h: 21: void update_fade();
+[; ;user.h: 23: void get_next_frame();
+[; ;user.c: 22: extern unsigned char clear_buffer_flag;
+[; ;user.c: 23: extern unsigned int multiplexed_counter;
+[; ;user.c: 24: extern unsigned int next_frame_counter;
+[; ;user.c: 25: extern unsigned int fade_frame_counter;
+[; ;user.c: 26: extern unsigned char current_frame[];
+[; ;user.c: 27: extern unsigned short long fade_frame;
+[; ;user.c: 28: extern unsigned int multiplexed_segment_counter;
+"31 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
-"23
+"32
 {
-[; ;user.c: 22: void InitApp(void)
-[; ;user.c: 23: {
+[; ;user.c: 31: void InitApp(void)
+[; ;user.c: 32: {
 [e :U _InitApp ]
 [f ]
-[; ;user.c: 27: WPUA = 0x00;
-"27
-[e = _WPUA -> -> 0 `i `uc ]
-[; ;user.c: 28: INLVLA = 0x00;
-"28
-[e = _INLVLA -> -> 0 `i `uc ]
-[; ;user.c: 29: LATA = 0x00;
-"29
-[e = _LATA -> -> 0 `i `uc ]
-[; ;user.c: 32: WPUC = 0x00;
-"32
-[e = _WPUC -> -> 0 `i `uc ]
-[; ;user.c: 33: INLVLC = 0x00;
-"33
-[e = _INLVLC -> -> 0 `i `uc ]
-[; ;user.c: 34: LATC = 0x00;
-"34
-[e = _LATC -> -> 0 `i `uc ]
-[; ;user.c: 36: IOCAP = 0x00;
+[; ;user.c: 36: WPUA = 0x00;
 "36
-[e = _IOCAP -> -> 0 `i `uc ]
-[; ;user.c: 37: IOCAN = 0x00;
+[e = _WPUA -> -> 0 `i `uc ]
+[; ;user.c: 37: INLVLA = 0x00;
 "37
-[e = _IOCAN -> -> 0 `i `uc ]
-[; ;user.c: 39: FVRCONbits.FVREN = 0b0;
-"39
-[e = . . _FVRCONbits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 40: FVRCONbits.TSEN = 0b0;
-"40
-[e = . . _FVRCONbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 43: TRISA = 0x00;
+[e = _INLVLA -> -> 0 `i `uc ]
+[; ;user.c: 38: LATA = 0x00;
+"38
+[e = _LATA -> -> 0 `i `uc ]
+[; ;user.c: 41: WPUC = 0x00;
+"41
+[e = _WPUC -> -> 0 `i `uc ]
+[; ;user.c: 42: INLVLC = 0x00;
+"42
+[e = _INLVLC -> -> 0 `i `uc ]
+[; ;user.c: 43: LATC = 0x00;
 "43
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;user.c: 44: ANSELA = 0x00;
-"44
-[e = _ANSELA -> -> 0 `i `uc ]
-[; ;user.c: 46: TRISC = 0b001010;
+[e = _LATC -> -> 0 `i `uc ]
+[; ;user.c: 45: IOCAP = 0x00;
+"45
+[e = _IOCAP -> -> 0 `i `uc ]
+[; ;user.c: 46: IOCAN = 0x00;
 "46
-[e = _TRISC -> -> 10 `i `uc ]
-[; ;user.c: 47: ANSELC = 0x00;
-"47
-[e = _ANSELC -> -> 0 `i `uc ]
-[; ;user.c: 49: ADCON0bits.ADON = 0b0;
+[e = _IOCAN -> -> 0 `i `uc ]
+[; ;user.c: 48: FVRCONbits.FVREN = 0b0;
+"48
+[e = . . _FVRCONbits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 49: FVRCONbits.TSEN = 0b0;
 "49
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 50: DACCON0bits.DACEN = 0b0;
-"50
-[e = . . _DACCON0bits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 51: DACCON0bits.DACOE = 0b0;
-"51
-[e = . . _DACCON0bits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 53: SRCON0bits.SRLEN = 0b0;
+[e = . . _FVRCONbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 52: TRISA = 0x00;
+"52
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;user.c: 53: ANSELA = 0x00;
 "53
-[e = . . _SRCON0bits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 55: CM1CON0bits.C1ON = 0b0;
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;user.c: 55: TRISC = 0b001010;
 "55
-[e = . . _CM1CON0bits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 56: CM2CON0bits.C2ON = 0b0;
+[e = _TRISC -> -> 10 `i `uc ]
+[; ;user.c: 56: ANSELC = 0x00;
 "56
-[e = . . _CM2CON0bits 0 7 -> -> 0 `i `uc ]
-[; ;user.c: 58: MDCONbits.MDEN = 0b0;
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;user.c: 58: ADCON0bits.ADON = 0b0;
 "58
-[e = . . _MDCONbits 0 6 -> -> 0 `i `uc ]
-[; ;user.c: 59: CPSCON0bits.CPSON = 0b0;
+[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 59: DACCON0bits.DACEN = 0b0;
 "59
-[e = . . _CPSCON0bits 0 6 -> -> 0 `i `uc ]
-[; ;user.c: 62: APFCON0bits.SDOSEL = 0b0;
+[e = . . _DACCON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 60: DACCON0bits.DACOE = 0b0;
+"60
+[e = . . _DACCON0bits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 62: SRCON0bits.SRLEN = 0b0;
 "62
-[e = . . _APFCON0bits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 63: APFCON0bits.SSSEL = 0b0;
-"63
-[e = . . _APFCON0bits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 68: OPTION_REGbits.nWPUEN = 0b1;
+[e = . . _SRCON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 64: CM1CON0bits.C1ON = 0b0;
+"64
+[e = . . _CM1CON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 65: CM2CON0bits.C2ON = 0b0;
+"65
+[e = . . _CM2CON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 67: MDCONbits.MDEN = 0b0;
+"67
+[e = . . _MDCONbits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 68: CPSCON0bits.CPSON = 0b0;
 "68
-[e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
-[; ;user.c: 69: OPTION_REGbits.TMR0CS = 0b0;
-"69
-[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 70: OPTION_REGbits.PSA = 0b1;
-"70
-[e = . . _OPTION_REGbits 0 3 -> -> 1 `i `uc ]
-[; ;user.c: 73: SSP1STATbits.CKE = 0b1;
-"73
-[e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
-[; ;user.c: 75: SSP1CON1bits.SSPEN = 0b1;
-"75
-[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
-[; ;user.c: 76: SSP1CON1bits.CKP = 0b0;
-"76
-[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 77: SSP1CON1bits.SSPM = 0b0000;
+[e = . . _CPSCON0bits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 71: APFCON0bits.SDOSEL = 0b0;
+"71
+[e = . . _APFCON0bits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 72: APFCON0bits.SSSEL = 0b0;
+"72
+[e = . . _APFCON0bits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 77: OPTION_REGbits.nWPUEN = 0b1;
 "77
-[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
-[; ;user.c: 82: INTCONbits.GIE = 0b1;
+[e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 78: OPTION_REGbits.TMR0CS = 0b0;
+"78
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 79: OPTION_REGbits.PSA = 0b1;
+"79
+[e = . . _OPTION_REGbits 0 3 -> -> 1 `i `uc ]
+[; ;user.c: 82: SSP1STATbits.CKE = 0b1;
 "82
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;user.c: 83: INTCONbits.TMR0IE = 0b1;
-"83
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;user.c: 84: INTCONbits.PEIE = 0b1;
+[e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
+[; ;user.c: 84: SSP1CON1bits.SSPEN = 0b1;
 "84
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;user.c: 86: }
+[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 85: SSP1CON1bits.CKP = 0b0;
+"85
+[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 86: SSP1CON1bits.SSPM = 0b0000;
 "86
+[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
+[; ;user.c: 91: INTCONbits.GIE = 0b1;
+"91
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 92: INTCONbits.TMR0IE = 0b1;
+"92
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 93: INTCONbits.PEIE = 0b1;
+"93
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;user.c: 95: }
+"95
 [e :UE 324 ]
+}
+"97
+[v _write_leds `(v ~T0 @X0 1 ef ]
+"98
+{
+[; ;user.c: 97: void write_leds()
+[; ;user.c: 98: {
+[e :U _write_leds ]
+[f ]
+[; ;user.c: 99: SSP1BUF = 1 << multiplexed_segment_counter;
+"99
+[e = _SSP1BUF -> << -> 1 `i _multiplexed_segment_counter `uc ]
+[; ;user.c: 100: while(SSP1STATbits.BF == 0);
+"100
+[e $U 326  ]
+[e :U 327 ]
+[e :U 326 ]
+[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 327  ]
+[e :U 328 ]
+[; ;user.c: 101: clear_buffer_flag = SSP1BUF;
+"101
+[e = _clear_buffer_flag _SSP1BUF ]
+[; ;user.c: 102: SSP1BUF = ~(fade_frame >> (multiplexed_segment_counter * 8));
+"102
+[e = _SSP1BUF -> ~ >> _fade_frame * _multiplexed_segment_counter -> -> 8 `i `ui `uc ]
+[; ;user.c: 103: while(SSP1STATbits.BF == 0);
+"103
+[e $U 329  ]
+[e :U 330 ]
+[e :U 329 ]
+[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 330  ]
+[e :U 331 ]
+[; ;user.c: 104: clear_buffer_flag = SSP1BUF;
+"104
+[e = _clear_buffer_flag _SSP1BUF ]
+[; ;user.c: 105: LATCbits.LATC5 = 1;
+"105
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 106: LATCbits.LATC5 = 0;
+"106
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 107: }
+"107
+[e :UE 325 ]
+}
+"109
+[v _update_fade `(v ~T0 @X0 1 ef ]
+"110
+{
+[; ;user.c: 109: void update_fade()
+[; ;user.c: 110: {
+[e :U _update_fade ]
+[f ]
+"111
+[v _i `i ~T0 @X0 1 a ]
+[; ;user.c: 111: int i = 0;
+[e = _i -> 0 `i ]
+[; ;user.c: 113: for(i = 0; i < 18; i++)
+"113
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 18 `i 333  ]
+[e $U 334  ]
+"114
+[e :U 333 ]
+[; ;user.c: 114: {
+{
+[; ;user.c: 115: if(current_frame[i] >= fade_frame_counter)
+"115
+[e $ ! >= -> *U + &U _current_frame * -> -> _i `ui `ux -> -> # *U &U _current_frame `ui `ux `ui _fade_frame_counter 336  ]
+[; ;user.c: 116: {
+"116
+{
+[; ;user.c: 117: fade_frame = (fade_frame << 1) + 1;
+"117
+[e = _fade_frame + << _fade_frame -> 1 `i -> -> -> 1 `i `m `um ]
+"118
+}
+[; ;user.c: 118: }
+[e $U 337  ]
+"120
+[e :U 336 ]
+[; ;user.c: 120: else
+[; ;user.c: 121: {
+"121
+{
+[; ;user.c: 122: fade_frame = fade_frame << 1;
+"122
+[e = _fade_frame << _fade_frame -> 1 `i ]
+"123
+}
+[e :U 337 ]
+"124
+}
+"113
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 18 `i 333  ]
+[e :U 334 ]
+"124
+}
+[; ;user.c: 123: }
+[; ;user.c: 124: }
+[; ;user.c: 125: }
+"125
+[e :UE 332 ]
+}
+"127
+[v _get_next_frame `(v ~T0 @X0 1 ef ]
+"128
+{
+[; ;user.c: 127: void get_next_frame()
+[; ;user.c: 128: {
+[e :U _get_next_frame ]
+[f ]
+"129
+[v _temp `uc ~T0 @X0 1 a ]
+"130
+[v _i `i ~T0 @X0 1 a ]
+[; ;user.c: 129: unsigned char temp;
+[; ;user.c: 130: int i = 0;
+[e = _i -> 0 `i ]
+[; ;user.c: 132: temp = current_frame[0];
+"132
+[e = _temp *U + &U _current_frame * -> -> -> 0 `i `ui `ux -> -> # *U &U _current_frame `ui `ux ]
+[; ;user.c: 134: for(i = 0; i < 17; i++)
+"134
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 17 `i 339  ]
+[e $U 340  ]
+"135
+[e :U 339 ]
+[; ;user.c: 135: {
+{
+[; ;user.c: 136: current_frame[i] = current_frame[i+1];
+"136
+[e = *U + &U _current_frame * -> -> _i `ui `ux -> -> # *U &U _current_frame `ui `ux *U + &U _current_frame * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _current_frame `ui `ux ]
+"137
+}
+"134
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 17 `i 339  ]
+[e :U 340 ]
+"137
+}
+[; ;user.c: 137: }
+[; ;user.c: 139: current_frame[17] = temp;
+"139
+[e = *U + &U _current_frame * -> -> -> 17 `i `ui `ux -> -> # *U &U _current_frame `ui `ux _temp ]
+[; ;user.c: 140: }
+"140
+[e :UE 338 ]
 }

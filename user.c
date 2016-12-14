@@ -19,6 +19,15 @@
 
 /* <Initialize variables in user.h and insert code for user algorithms.> */
 
+extern unsigned char clear_buffer_flag;
+extern unsigned int multiplexed_counter;
+extern unsigned int next_frame_counter;
+extern unsigned int fade_frame_counter;
+extern unsigned char current_frame[];
+extern unsigned short long fade_frame;
+extern unsigned int multiplexed_segment_counter;
+
+
 void InitApp(void)
 {
     /* TODO Initialize User Ports/Peripherals/Project here */
@@ -70,7 +79,7 @@ void InitApp(void)
     OPTION_REGbits.PSA = 0b1; //No Prescaler
     
     // MSSP1
-    SSP1STATbits.CKE = 0b1; //Transmit occurs on transition from ide to active clock state
+    SSP1STATbits.CKE = 0b1; //
     
     SSP1CON1bits.SSPEN = 0b1; // Enable MSSP
     SSP1CON1bits.CKP = 0b0; // 
@@ -85,3 +94,47 @@ void InitApp(void)
     //PIE1bits.SSP1IE = 0b1; // Enable MSSP
 }
 
+void write_leds()
+{
+            SSP1BUF = 1 << multiplexed_segment_counter;
+            while(SSP1STATbits.BF == 0);
+            clear_buffer_flag = SSP1BUF;
+            SSP1BUF = ~(fade_frame >> (multiplexed_segment_counter * 8));
+            while(SSP1STATbits.BF == 0);
+            clear_buffer_flag = SSP1BUF;
+            LATCbits.LATC5 = 1;
+            LATCbits.LATC5 = 0;
+}
+
+void update_fade()
+{
+    int i = 0;
+    
+    for(i = 0; i < 18; i++)
+    {
+        if(current_frame[i] >= fade_frame_counter)
+        {
+            fade_frame = (fade_frame << 1) + 1;
+        }
+        
+        else
+        {
+            fade_frame = fade_frame << 1;
+        }
+    }
+}
+
+void get_next_frame()
+{
+    unsigned char temp;
+    int i = 0;
+    
+    temp = current_frame[0];
+    
+    for(i = 0; i < 17; i++)
+    {
+        current_frame[i] = current_frame[i+1];
+    }
+    
+    current_frame[17] = temp;
+}
