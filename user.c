@@ -70,10 +70,10 @@ void InitApp(void)
     OPTION_REGbits.PSA = 0b1; //No Prescaler
     
     // MSSP1
-    SSP1STATbits.CKE = 0b0; //Transmit occurs on transition from ide to active clock state
+    SSP1STATbits.CKE = 0b1; //Transmit occurs on transition from ide to active clock state
     
     SSP1CON1bits.SSPEN = 0b1; // Enable MSSP
-    SSP1CON1bits.CKP = 0b0; // low level is idle state for clock
+    SSP1CON1bits.CKP = 0b0; // 
     SSP1CON1bits.SSPM = 0b0000; // SPI Master Mode; Clock is Fosc/4 = 8MHz
     
     

@@ -40,27 +40,25 @@ void main(void)
     
     
     
-    SSP1BUF = 0b11110000;
+    SSP1BUF = 0b00000001;
     while(SSP1STATbits.BF == 0);
-    LATCbits.LATC5 = 1;
-    LATCbits.LATC5 = 0;
+    //LATCbits.LATC5 = 1;
+    //LATCbits.LATC5 = 0;
     var = SSP1BUF;
+    _delay(100);
     
-    
-    SSP1BUF = 0b10101010;
+    SSP1BUF = 0b00000000;
     while(SSP1STATbits.BF == 0)
     _delay(100);
+    var = SSP1BUF;
     LATCbits.LATC5 = 1;
     LATCbits.LATC5 = 0;
-    /*
-    while(SSP1STATbits.BF == 0);
-    var = SSP1BUF;
-        SSP1BUF = 0b01010101;
-    while(SSP1STATbits.BF == 0);
-    var = SSP1BUF;
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC5 = 0;
-    */
+    
+     _delay(100);
+    
+    
+    
+    
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
