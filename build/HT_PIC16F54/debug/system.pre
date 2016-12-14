@@ -1,5 +1,5 @@
 
-# 1 "interrupts.c"
+# 1 "system.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3630,64 +3630,15 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
 
-# 16 "user.h"
-void InitApp(void);
+# 19 "system.h"
+void ConfigureOscillator(void);
 
-# 25 "interrupts.c"
-extern unsigned char clear_buffer_flag;
-extern unsigned int multiplexed_counter;
-extern unsigned int next_frame_counter;
-extern unsigned short long current_frame;
-extern unsigned int multiplexed_segment_counter;
-
-void interrupt isr(void)
+# 18 "system.c"
+void ConfigureOscillator(void)
 {
 
-# 38
-if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-{
-multiplexed_counter++;
-
-
-if(multiplexed_counter >= 10)
-{
-
-multiplexed_counter = 0;
-
-
-
-SSP1BUF = 1 << multiplexed_segment_counter;
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-LATCbits.LATC5 = 1;
-LATCbits.LATC5 = 0;
-
-next_frame_counter++;
-multiplexed_segment_counter++;
-
-if(multiplexed_segment_counter > 2)
-{
-multiplexed_segment_counter = 0;
-}
-
-
-if(next_frame_counter >= 1600)
-{
-
-next_frame_counter = 0;
-
-current_frame = (current_frame << 1) + 1;
-}
-
+# 28
+OSCCONbits.IRCF = 0b1110;
+OSCCONbits.SCS = 0b00;
 
 }
-
-INTCONbits.TMR0IF = 0;
-}
-
-# 104
-}
-

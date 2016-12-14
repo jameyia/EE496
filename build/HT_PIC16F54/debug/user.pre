@@ -1,5 +1,5 @@
 
-# 1 "interrupts.c"
+# 1 "user.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3633,61 +3633,70 @@ typedef unsigned char bool;
 # 16 "user.h"
 void InitApp(void);
 
-# 25 "interrupts.c"
-extern unsigned char clear_buffer_flag;
-extern unsigned int multiplexed_counter;
-extern unsigned int next_frame_counter;
-extern unsigned short long current_frame;
-extern unsigned int multiplexed_segment_counter;
-
-void interrupt isr(void)
+# 22 "user.c"
+void InitApp(void)
 {
 
-# 38
-if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-{
-multiplexed_counter++;
 
 
-if(multiplexed_counter >= 10)
-{
-
-multiplexed_counter = 0;
-
+WPUA = 0x00;
+INLVLA = 0x00;
+LATA = 0x00;
 
 
-SSP1BUF = 1 << multiplexed_segment_counter;
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
-while(SSP1STATbits.BF == 0);
-clear_buffer_flag = SSP1BUF;
-LATCbits.LATC5 = 1;
-LATCbits.LATC5 = 0;
+WPUC = 0x00;
+INLVLC = 0x00;
+LATC = 0x00;
 
-next_frame_counter++;
-multiplexed_segment_counter++;
+IOCAP = 0x00;
+IOCAN = 0x00;
 
-if(multiplexed_segment_counter > 2)
-{
-multiplexed_segment_counter = 0;
-}
+FVRCONbits.FVREN = 0b0;
+FVRCONbits.TSEN = 0b0;
 
 
-if(next_frame_counter >= 1600)
-{
+TRISA = 0x00;
+ANSELA = 0x00;
 
-next_frame_counter = 0;
+TRISC = 0b001010;
+ANSELC = 0x00;
 
-current_frame = (current_frame << 1) + 1;
-}
+ADCON0bits.ADON = 0b0;
+DACCON0bits.DACEN = 0b0;
+DACCON0bits.DACOE = 0b0;
+
+SRCON0bits.SRLEN = 0b0;
+
+CM1CON0bits.C1ON = 0b0;
+CM2CON0bits.C2ON = 0b0;
+
+MDCONbits.MDEN = 0b0;
+CPSCON0bits.CPSON = 0b0;
 
 
-}
+APFCON0bits.SDOSEL = 0b0;
+APFCON0bits.SSSEL = 0b0;
 
-INTCONbits.TMR0IF = 0;
-}
 
-# 104
+
+
+OPTION_REGbits.nWPUEN = 0b1;
+OPTION_REGbits.TMR0CS = 0b0;
+OPTION_REGbits.PSA = 0b1;
+
+
+SSP1STATbits.CKE = 0b1;
+
+SSP1CON1bits.SSPEN = 0b1;
+SSP1CON1bits.CKP = 0b0;
+SSP1CON1bits.SSPM = 0b0000;
+
+
+
+
+INTCONbits.GIE = 0b1;
+INTCONbits.TMR0IE = 0b1;
+INTCONbits.PEIE = 0b1;
+
 }
 

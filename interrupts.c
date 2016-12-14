@@ -22,11 +22,11 @@
  * _PIC12 */
 #ifndef _PIC12
 
-extern unsigned char var;
+extern unsigned char clear_buffer_flag;
 extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
 extern unsigned short long current_frame;
-extern unsigned int multiplexer_counter;
+extern unsigned int multiplexed_segment_counter;
 
 void interrupt isr(void)
 {
@@ -36,9 +36,7 @@ void interrupt isr(void)
     time errors. */
 
     if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-    {
-        INTCONbits.TMR0IF = 0; // clear interrupt flag
-        
+    {   
         multiplexed_counter++;
         
         
@@ -46,13 +44,24 @@ void interrupt isr(void)
         {
             // MULTIPLEX / SHIFT OUT DATA!!!
             multiplexed_counter = 0;
+            
+            
+            // Shift out data
+            SSP1BUF = 1 << multiplexed_segment_counter;
+            while(SSP1STATbits.BF == 0);
+            clear_buffer_flag = SSP1BUF;
+            SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
+            while(SSP1STATbits.BF == 0);
+            clear_buffer_flag = SSP1BUF;
+            LATCbits.LATC5 = 1;
+            LATCbits.LATC5 = 0;
+            
             next_frame_counter++;
+            multiplexed_segment_counter++;
             
-            //multiplexer_counter++;
-            
-            if(multiplexer_counter > 2)
+            if(multiplexed_segment_counter > 2)
             {
-                multiplexer_counter = 0;
+                multiplexed_segment_counter = 0;
             }
             
             
@@ -61,16 +70,13 @@ void interrupt isr(void)
                 // UPDATE FRAME
                 next_frame_counter = 0;
                 
-                //Get Next Frame
-                //current_frame = current_frame*2 + 1;
-                
-                var++;
-                
-                
+                current_frame = (current_frame << 1) + 1;
             }
+            
+            
         }
         
-        
+        INTCONbits.TMR0IF = 0; // clear interrupt flag
     }
     
 #if 0

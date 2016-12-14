@@ -1,5 +1,149 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"343 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+"3205 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[v _WPUA `Vuc ~T0 @X0 0 e@524 ]
+"5005
+[v _INLVLA `Vuc ~T0 @X0 0 e@908 ]
+"1898
+[v _LATA `Vuc ~T0 @X0 0 e@268 ]
+"3262
+[v _WPUC `Vuc ~T0 @X0 0 e@526 ]
+"5062
+[v _INLVLC `Vuc ~T0 @X0 0 e@910 ]
+"1942
+[v _LATC `Vuc ~T0 @X0 0 e@270 ]
+"5119
+[v _IOCAP `Vuc ~T0 @X0 0 e@913 ]
+"5176
+[v _IOCAN `Vuc ~T0 @X0 0 e@914 ]
+"2290
+[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S120 . ADFVR0 ADFVR1 CDAFVR0 CDAFVR1 TSRNG TSEN FVRRDY FVREN ]
+"2300
+[s S121 :2 `uc 1 :2 `uc 1 ]
+[n S121 . ADFVR CDAFVR ]
+"2289
+[u S119 `S120 1 `S121 1 ]
+[n S119 . . . ]
+"2305
+[v _FVRCONbits `VS119 ~T0 @X0 0 e@279 ]
+"1077
+[v _TRISA `Vuc ~T0 @X0 0 e@140 ]
+"2673
+[v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
+"1126
+[v _TRISC `Vuc ~T0 @X0 0 e@142 ]
+"2719
+[v _ANSELC `Vuc ~T0 @X0 0 e@398 ]
+"1754
+[s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 . ADON GO_nDONE CHS0 CHS1 CHS2 CHS3 CHS4 ]
+"1763
+[s S96 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
+[n S96 . . ADGO CHS ]
+"1768
+[s S97 :1 `uc 1 :1 `uc 1 ]
+[n S97 . . GO ]
+"1753
+[u S94 `S95 1 `S96 1 `S97 1 ]
+[n S94 . . . . ]
+"1773
+[v _ADCON0bits `VS94 ~T0 @X0 0 e@157 ]
+"2365
+[s S123 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S123 . DACNSS . DACPSS0 DACPSS1 . DACOE DACLPS DACEN ]
+"2375
+[s S124 :2 `uc 1 :2 `uc 1 ]
+[n S124 . . DACPSS ]
+"2364
+[u S122 `S123 1 `S124 1 ]
+[n S122 . . . ]
+"2380
+[v _DACCON0bits `VS122 ~T0 @X0 0 e@280 ]
+"2476
+[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S129 . SRPR SRPS SRNQEN SRQEN SRCLK0 SRCLK1 SRCLK2 SRLEN ]
+"2486
+[s S130 :4 `uc 1 :3 `uc 1 ]
+[n S130 . . SRCLK ]
+"2475
+[u S128 `S129 1 `S130 1 ]
+[n S128 . . . ]
+"2491
+[v _SRCON0bits `VS128 ~T0 @X0 0 e@282 ]
+"1997
+[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S106 . C1SYNC C1HYS C1SP . C1POL C1OE C1OUT C1ON ]
+"1996
+[u S105 `S106 1 ]
+[n S105 . . ]
+"2008
+[v _CM1CON0bits `VS105 ~T0 @X0 0 e@273 ]
+"2118
+[s S111 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S111 . C2SYNC C2HYS C2SP . C2POL C2OE C2OUT C2ON ]
+"2117
+[u S110 `S111 1 ]
+[n S110 . . ]
+"2129
+[v _CM2CON0bits `VS110 ~T0 @X0 0 e@275 ]
+"5371
+[s S278 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S278 . MDBIT . MDOUT MDOPOL MDSLR MDOE MDEN ]
+"5370
+[u S277 `S278 1 ]
+[n S277 . . ]
+"5381
+[v _MDCONbits `VS277 ~T0 @X0 0 e@924 ]
+"979
+[s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S59 . T0XCS CPSOUT CPSRNG0 CPSRNG1 . CPSRM CPSON ]
+"988
+[s S60 :2 `uc 1 :2 `uc 1 ]
+[n S60 . . CPSRNG ]
+"978
+[u S58 `S59 1 `S60 1 ]
+[n S58 . . . ]
+"993
+[v _CPSCON0bits `VS58 ~T0 @X0 0 e@30 ]
+"2597
+[s S134 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S134 . . TXCKSEL T1GSEL . SSSEL SDOSEL RXDTSEL ]
+"2596
+[u S133 `S134 1 ]
+[n S133 . . ]
+"2607
+[v _APFCON0bits `VS133 ~T0 @X0 0 e@285 ]
+"1331
+[s S75 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S75 . PS0 PS1 PS2 PSA TMR0SE TMR0CS INTEDG nWPUEN ]
+"1341
+[s S76 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S76 . PS . T0SE T0CS ]
+"1330
+[u S74 `S75 1 `S76 1 ]
+[n S74 . . . ]
+"1348
+[v _OPTION_REGbits `VS74 ~T0 @X0 0 e@149 ]
+"3433
+[s S189 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S189 . BF UA R_nW S P D_nA CKE SMP ]
+"3432
+[u S188 `S189 1 ]
+[n S188 . . ]
+"3444
+[v _SSP1STATbits `VS188 ~T0 @X0 0 e@532 ]
+"3558
+[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S193 . SSPM0 SSPM1 SSPM2 SSPM3 CKP SSPEN SSPOV WCOL ]
+"3568
+[s S194 :4 `uc 1 ]
+[n S194 . SSPM ]
+"3557
+[u S192 `S193 1 `S194 1 ]
+[n S192 . . . ]
+"3572
+[v _SSP1CON1bits `VS192 ~T0 @X0 0 e@533 ]
+"343
 [s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S27 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
 "353
@@ -10,34 +154,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
-"26 interrupts.c
-[v _multiplexed_counter `ui ~T0 @X0 0 e ]
-"3311 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
-[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
-"29 interrupts.c
-[v _multiplexed_segment_counter `ui ~T0 @X0 0 e ]
-"3433 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
-[s S189 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S189 . BF UA R_nW S P D_nA CKE SMP ]
-"3432
-[u S188 `S189 1 ]
-[n S188 . . ]
-"3444
-[v _SSP1STATbits `VS188 ~T0 @X0 0 e@532 ]
-"25 interrupts.c
-[v _clear_buffer_flag `uc ~T0 @X0 0 e ]
-"28
-[v _current_frame `um ~T0 @X0 0 e ]
-"1948 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
-[s S104 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S104 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
-"1947
-[u S103 `S104 1 ]
-[n S103 . . ]
-"1957
-[v _LATCbits `VS103 ~T0 @X0 0 e@270 ]
-"27 interrupts.c
-[v _next_frame_counter `ui ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2658,117 +2774,117 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;user.h: 16: void InitApp(void);
-[; ;interrupts.c: 25: extern unsigned char clear_buffer_flag;
-[; ;interrupts.c: 26: extern unsigned int multiplexed_counter;
-[; ;interrupts.c: 27: extern unsigned int next_frame_counter;
-[; ;interrupts.c: 28: extern unsigned short long current_frame;
-[; ;interrupts.c: 29: extern unsigned int multiplexed_segment_counter;
-[v F2698 `(v ~T0 @X0 1 tf ]
-"31 interrupts.c
-[v _isr `IF2698 ~T0 @X0 1 e ]
-"32
+"22 user.c
+[v _InitApp `(v ~T0 @X0 1 ef ]
+"23
 {
-[; ;interrupts.c: 31: void interrupt isr(void)
-[; ;interrupts.c: 32: {
-[e :U _isr ]
+[; ;user.c: 22: void InitApp(void)
+[; ;user.c: 23: {
+[e :U _InitApp ]
 [f ]
-[; ;interrupts.c: 38: if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-"38
-[e $ ! && == -> . . _INTCONbits 0 5 `i -> 1 `i == -> . . _INTCONbits 0 2 `i -> 1 `i 325  ]
-[; ;interrupts.c: 39: {
+[; ;user.c: 27: WPUA = 0x00;
+"27
+[e = _WPUA -> -> 0 `i `uc ]
+[; ;user.c: 28: INLVLA = 0x00;
+"28
+[e = _INLVLA -> -> 0 `i `uc ]
+[; ;user.c: 29: LATA = 0x00;
+"29
+[e = _LATA -> -> 0 `i `uc ]
+[; ;user.c: 32: WPUC = 0x00;
+"32
+[e = _WPUC -> -> 0 `i `uc ]
+[; ;user.c: 33: INLVLC = 0x00;
+"33
+[e = _INLVLC -> -> 0 `i `uc ]
+[; ;user.c: 34: LATC = 0x00;
+"34
+[e = _LATC -> -> 0 `i `uc ]
+[; ;user.c: 36: IOCAP = 0x00;
+"36
+[e = _IOCAP -> -> 0 `i `uc ]
+[; ;user.c: 37: IOCAN = 0x00;
+"37
+[e = _IOCAN -> -> 0 `i `uc ]
+[; ;user.c: 39: FVRCONbits.FVREN = 0b0;
 "39
-{
-[; ;interrupts.c: 40: multiplexed_counter++;
+[e = . . _FVRCONbits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 40: FVRCONbits.TSEN = 0b0;
 "40
-[e ++ _multiplexed_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 43: if(multiplexed_counter >= 10)
+[e = . . _FVRCONbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 43: TRISA = 0x00;
 "43
-[e $ ! >= _multiplexed_counter -> -> 10 `i `ui 326  ]
-[; ;interrupts.c: 44: {
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;user.c: 44: ANSELA = 0x00;
 "44
-{
-[; ;interrupts.c: 46: multiplexed_counter = 0;
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;user.c: 46: TRISC = 0b001010;
 "46
-[e = _multiplexed_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 50: SSP1BUF = 1 << multiplexed_segment_counter;
+[e = _TRISC -> -> 10 `i `uc ]
+[; ;user.c: 47: ANSELC = 0x00;
+"47
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;user.c: 49: ADCON0bits.ADON = 0b0;
+"49
+[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 50: DACCON0bits.DACEN = 0b0;
 "50
-[e = _SSP1BUF -> << -> 1 `i _multiplexed_segment_counter `uc ]
-[; ;interrupts.c: 51: while(SSP1STATbits.BF == 0);
+[e = . . _DACCON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 51: DACCON0bits.DACOE = 0b0;
 "51
-[e $U 327  ]
-[e :U 328 ]
-[e :U 327 ]
-[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 328  ]
-[e :U 329 ]
-[; ;interrupts.c: 52: clear_buffer_flag = SSP1BUF;
-"52
-[e = _clear_buffer_flag _SSP1BUF ]
-[; ;interrupts.c: 53: SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
+[e = . . _DACCON0bits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 53: SRCON0bits.SRLEN = 0b0;
 "53
-[e = _SSP1BUF -> ~ >> _current_frame * _multiplexed_segment_counter -> -> 8 `i `ui `uc ]
-[; ;interrupts.c: 54: while(SSP1STATbits.BF == 0);
-"54
-[e $U 330  ]
-[e :U 331 ]
-[e :U 330 ]
-[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 331  ]
-[e :U 332 ]
-[; ;interrupts.c: 55: clear_buffer_flag = SSP1BUF;
+[e = . . _SRCON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 55: CM1CON0bits.C1ON = 0b0;
 "55
-[e = _clear_buffer_flag _SSP1BUF ]
-[; ;interrupts.c: 56: LATCbits.LATC5 = 1;
+[e = . . _CM1CON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 56: CM2CON0bits.C2ON = 0b0;
 "56
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;interrupts.c: 57: LATCbits.LATC5 = 0;
-"57
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;interrupts.c: 59: next_frame_counter++;
+[e = . . _CM2CON0bits 0 7 -> -> 0 `i `uc ]
+[; ;user.c: 58: MDCONbits.MDEN = 0b0;
+"58
+[e = . . _MDCONbits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 59: CPSCON0bits.CPSON = 0b0;
 "59
-[e ++ _next_frame_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 60: multiplexed_segment_counter++;
-"60
-[e ++ _multiplexed_segment_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 62: if(multiplexed_segment_counter > 2)
+[e = . . _CPSCON0bits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 62: APFCON0bits.SDOSEL = 0b0;
 "62
-[e $ ! > _multiplexed_segment_counter -> -> 2 `i `ui 333  ]
-[; ;interrupts.c: 63: {
+[e = . . _APFCON0bits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 63: APFCON0bits.SSSEL = 0b0;
 "63
-{
-[; ;interrupts.c: 64: multiplexed_segment_counter = 0;
-"64
-[e = _multiplexed_segment_counter -> -> 0 `i `ui ]
-"65
-}
-[e :U 333 ]
-[; ;interrupts.c: 65: }
-[; ;interrupts.c: 68: if(next_frame_counter >= 1600)
+[e = . . _APFCON0bits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 68: OPTION_REGbits.nWPUEN = 0b1;
 "68
-[e $ ! >= _next_frame_counter -> -> 1600 `i `ui 334  ]
-[; ;interrupts.c: 69: {
+[e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 69: OPTION_REGbits.TMR0CS = 0b0;
 "69
-{
-[; ;interrupts.c: 71: next_frame_counter = 0;
-"71
-[e = _next_frame_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 73: current_frame = (current_frame << 1) + 1;
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 70: OPTION_REGbits.PSA = 0b1;
+"70
+[e = . . _OPTION_REGbits 0 3 -> -> 1 `i `uc ]
+[; ;user.c: 73: SSP1STATbits.CKE = 0b1;
 "73
-[e = _current_frame + << _current_frame -> 1 `i -> -> -> 1 `i `m `um ]
-"74
-}
-[e :U 334 ]
+[e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
+[; ;user.c: 75: SSP1CON1bits.SSPEN = 0b1;
+"75
+[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 76: SSP1CON1bits.CKP = 0b0;
+"76
+[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 77: SSP1CON1bits.SSPM = 0b0000;
 "77
-}
-[e :U 326 ]
-[; ;interrupts.c: 74: }
-[; ;interrupts.c: 77: }
-[; ;interrupts.c: 79: INTCONbits.TMR0IF = 0;
-"79
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"80
-}
-[e :U 325 ]
-[; ;interrupts.c: 80: }
-[; ;interrupts.c: 104: }
-"104
+[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
+[; ;user.c: 82: INTCONbits.GIE = 0b1;
+"82
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 83: INTCONbits.TMR0IE = 0b1;
+"83
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;user.c: 84: INTCONbits.PEIE = 0b1;
+"84
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;user.c: 86: }
+"86
 [e :UE 324 ]
 }

@@ -2703,9 +2703,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 52: clear_buffer_flag = SSP1BUF;
 "52
 [e = _clear_buffer_flag _SSP1BUF ]
-[; ;interrupts.c: 53: SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
+[; ;interrupts.c: 53: SSP1BUF = (!current_frame) >> multiplexed_segment_counter;
 "53
-[e = _SSP1BUF -> ~ >> _current_frame * _multiplexed_segment_counter -> -> 8 `i `ui `uc ]
+[e = _SSP1BUF -> >> -> ! != _current_frame -> -> 0 `i `um `i _multiplexed_segment_counter `uc ]
 [; ;interrupts.c: 54: while(SSP1STATbits.BF == 0);
 "54
 [e $U 330  ]

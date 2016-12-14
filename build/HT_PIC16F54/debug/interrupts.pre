@@ -3659,7 +3659,7 @@ multiplexed_counter = 0;
 SSP1BUF = 1 << multiplexed_segment_counter;
 while(SSP1STATbits.BF == 0);
 clear_buffer_flag = SSP1BUF;
-SSP1BUF = ~(current_frame >> (multiplexed_segment_counter * 8));
+SSP1BUF = (!current_frame) >> multiplexed_segment_counter;
 while(SSP1STATbits.BF == 0);
 clear_buffer_flag = SSP1BUF;
 LATCbits.LATC5 = 1;
