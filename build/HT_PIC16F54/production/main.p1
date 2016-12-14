@@ -4,6 +4,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
 "16 user.h
 [v _InitApp `(v ~T0 @X0 0 ef ]
+[v F2656 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic.h
+[v __delay `JF2656 ~T0 @X0 0 e ]
+[p i __delay ]
+"3311 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
+"3433
+[s S189 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S189 . BF UA R_nW S P D_nA CKE SMP ]
+"3432
+[u S188 `S189 1 ]
+[n S188 . . ]
+"3444
+[v _SSP1STATbits `VS188 ~T0 @X0 0 e@532 ]
+"1948
+[s S104 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S104 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"1947
+[u S103 `S104 1 ]
+[n S103 . . ]
+"1957
+[v _LATCbits `VS103 ~T0 @X0 0 e@270 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2643,34 +2665,88 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.c: 25: unsigned char var = 0x00;
-"30
+"26
+[v _current_frame `um ~T0 @X0 1 e ]
+[i _current_frame
+-> -> -> 0 `i `m `um
+]
+[; ;main.c: 26: unsigned short long current_frame = 0x000000;
+"27
+[v _multiplexer_counter `ui ~T0 @X0 1 e ]
+[i _multiplexer_counter
+-> -> 0 `i `ui
+]
+[; ;main.c: 27: unsigned int multiplexer_counter = 0;
+"32
 [v _main `(v ~T0 @X0 1 ef ]
-"31
+"33
 {
-[; ;main.c: 30: void main(void)
-[; ;main.c: 31: {
+[; ;main.c: 32: void main(void)
+[; ;main.c: 33: {
 [e :U _main ]
 [f ]
-[; ;main.c: 33: ConfigureOscillator();
-"33
+[; ;main.c: 35: ConfigureOscillator();
+"35
 [e ( _ConfigureOscillator ..  ]
-[; ;main.c: 36: InitApp();
-"36
+[; ;main.c: 38: InitApp();
+"38
 [e ( _InitApp ..  ]
-[; ;main.c: 40: while(1)
-"40
+[; ;main.c: 39: _delay(100);
+"39
+[e ( __delay (1 -> -> -> 100 `i `l `ul ]
+[; ;main.c: 43: SSP1BUF = 0b11110000;
+"43
+[e = _SSP1BUF -> -> 240 `i `uc ]
+[; ;main.c: 44: while(SSP1STATbits.BF == 0);
+"44
+[e $U 325  ]
 [e :U 326 ]
-[; ;main.c: 41: {
-"41
-{
-"50
-}
 [e :U 325 ]
-"40
-[e $U 326  ]
+[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 326  ]
 [e :U 327 ]
-[; ;main.c: 50: }
-[; ;main.c: 52: }
+[; ;main.c: 45: LATCbits.LATC5 = 1;
+"45
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 46: LATCbits.LATC5 = 0;
+"46
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 47: var = SSP1BUF;
+"47
+[e = _var _SSP1BUF ]
+[; ;main.c: 50: SSP1BUF = 0b10101010;
+"50
+[e = _SSP1BUF -> -> 170 `i `uc ]
+[; ;main.c: 51: while(SSP1STATbits.BF == 0)
+"51
+[e $U 328  ]
+[e :U 329 ]
+[; ;main.c: 52: _delay(100);
 "52
+[e ( __delay (1 -> -> -> 100 `i `l `ul ]
+[e :U 328 ]
+"51
+[e $ == -> . . _SSP1STATbits 0 0 `i -> 0 `i 329  ]
+[e :U 330 ]
+[; ;main.c: 53: LATCbits.LATC5 = 1;
+"53
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 54: LATCbits.LATC5 = 0;
+"54
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 64: while(1)
+"64
+[e :U 332 ]
+[; ;main.c: 65: {
+"65
+{
+"75
+}
+[e :U 331 ]
+"64
+[e $U 332  ]
+[e :U 333 ]
+[; ;main.c: 75: }
+[; ;main.c: 77: }
+"77
 [e :UE 324 ]
 }

@@ -3640,6 +3640,8 @@ void InitApp(void);
 unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
 unsigned char var = 0x00;
+unsigned short long current_frame = 0x000000;
+unsigned int multiplexer_counter = 0;
 
 
 
@@ -3651,13 +3653,28 @@ ConfigureOscillator();
 
 
 InitApp();
+_delay(100);
 
 
 
+SSP1BUF = 0b11110000;
+while(SSP1STATbits.BF == 0);
+LATCbits.LATC5 = 1;
+LATCbits.LATC5 = 0;
+var = SSP1BUF;
+
+
+SSP1BUF = 0b10101010;
+while(SSP1STATbits.BF == 0)
+_delay(100);
+LATCbits.LATC5 = 1;
+LATCbits.LATC5 = 0;
+
+# 64
 while(1)
 {
 
-# 50
+# 75
 }
 
 }

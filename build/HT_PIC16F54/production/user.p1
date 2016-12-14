@@ -154,14 +154,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
-"1181
-[s S69 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S69 . TMR1IE TMR2IE CCP1IE SSP1IE TXIE RCIE ADIE TMR1GIE ]
-"1180
-[u S68 `S69 1 ]
-[n S68 . . ]
-"1192
-[v _PIE1bits `VS68 ~T0 @X0 0 e@145 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2892,9 +2884,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 84: INTCONbits.PEIE = 0b1;
 "84
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;user.c: 85: PIE1bits.SSP1IE = 0b1;
-"85
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
 [; ;user.c: 86: }
 "86
 [e :UE 324 ]

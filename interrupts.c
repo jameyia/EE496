@@ -25,6 +25,8 @@
 extern unsigned char var;
 extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
+extern unsigned short long current_frame;
+extern unsigned int multiplexer_counter;
 
 void interrupt isr(void)
 {
@@ -46,18 +48,24 @@ void interrupt isr(void)
             multiplexed_counter = 0;
             next_frame_counter++;
             
+            //multiplexer_counter++;
+            
+            if(multiplexer_counter > 2)
+            {
+                multiplexer_counter = 0;
+            }
             
             
             if(next_frame_counter >= NEXT_FRAME)
             {
                 // UPDATE FRAME
                 next_frame_counter = 0;
+                
+                //Get Next Frame
+                //current_frame = current_frame*2 + 1;
+                
                 var++;
                 
-                
-                SSP1BUF = var;
-                LATCbits.LATC5 = 1;
-                LATCbits.LATC5 = 0;
                 
             }
         }

@@ -14,18 +14,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _multiplexed_counter `ui ~T0 @X0 0 e ]
 "27
 [v _next_frame_counter `ui ~T0 @X0 0 e ]
+"29
+[v _multiplexer_counter `ui ~T0 @X0 0 e ]
 "25
 [v _var `uc ~T0 @X0 0 e ]
-"3311 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1825.h
-[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
-"1948
-[s S104 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S104 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
-"1947
-[u S103 `S104 1 ]
-[n S103 . . ]
-"1957
-[v _LATCbits `VS103 ~T0 @X0 0 e@270 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2649,73 +2641,79 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 25: extern unsigned char var;
 [; ;interrupts.c: 26: extern unsigned int multiplexed_counter;
 [; ;interrupts.c: 27: extern unsigned int next_frame_counter;
-[v F2696 `(v ~T0 @X0 1 tf ]
-"29 interrupts.c
-[v _isr `IF2696 ~T0 @X0 1 e ]
-"30
+[; ;interrupts.c: 28: extern unsigned short long current_frame;
+[; ;interrupts.c: 29: extern unsigned int multiplexer_counter;
+[v F2698 `(v ~T0 @X0 1 tf ]
+"31 interrupts.c
+[v _isr `IF2698 ~T0 @X0 1 e ]
+"32
 {
-[; ;interrupts.c: 29: void interrupt isr(void)
-[; ;interrupts.c: 30: {
+[; ;interrupts.c: 31: void interrupt isr(void)
+[; ;interrupts.c: 32: {
 [e :U _isr ]
 [f ]
-[; ;interrupts.c: 36: if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-"36
-[e $ ! && == -> . . _INTCONbits 0 5 `i -> 1 `i == -> . . _INTCONbits 0 2 `i -> 1 `i 325  ]
-[; ;interrupts.c: 37: {
-"37
-{
-[; ;interrupts.c: 38: INTCONbits.TMR0IF = 0;
+[; ;interrupts.c: 38: if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
 "38
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 40: multiplexed_counter++;
+[e $ ! && == -> . . _INTCONbits 0 5 `i -> 1 `i == -> . . _INTCONbits 0 2 `i -> 1 `i 325  ]
+[; ;interrupts.c: 39: {
+"39
+{
+[; ;interrupts.c: 40: INTCONbits.TMR0IF = 0;
 "40
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;interrupts.c: 42: multiplexed_counter++;
+"42
 [e ++ _multiplexed_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 43: if(multiplexed_counter >= 10)
-"43
+[; ;interrupts.c: 45: if(multiplexed_counter >= 10)
+"45
 [e $ ! >= _multiplexed_counter -> -> 10 `i `ui 326  ]
-[; ;interrupts.c: 44: {
-"44
-{
-[; ;interrupts.c: 46: multiplexed_counter = 0;
+[; ;interrupts.c: 46: {
 "46
-[e = _multiplexed_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 47: next_frame_counter++;
-"47
-[e ++ _next_frame_counter -> -> 1 `i `ui ]
-[; ;interrupts.c: 51: if(next_frame_counter >= 3200)
-"51
-[e $ ! >= _next_frame_counter -> -> 3200 `i `ui 327  ]
-[; ;interrupts.c: 52: {
-"52
 {
-[; ;interrupts.c: 54: next_frame_counter = 0;
+[; ;interrupts.c: 48: multiplexed_counter = 0;
+"48
+[e = _multiplexed_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 49: next_frame_counter++;
+"49
+[e ++ _next_frame_counter -> -> 1 `i `ui ]
+[; ;interrupts.c: 53: if(multiplexer_counter > 2)
+"53
+[e $ ! > _multiplexer_counter -> -> 2 `i `ui 327  ]
+[; ;interrupts.c: 54: {
 "54
-[e = _next_frame_counter -> -> 0 `i `ui ]
-[; ;interrupts.c: 55: var++;
+{
+[; ;interrupts.c: 55: multiplexer_counter = 0;
 "55
-[e ++ _var -> -> 1 `i `uc ]
-[; ;interrupts.c: 58: SSP1BUF = var;
-"58
-[e = _SSP1BUF _var ]
-[; ;interrupts.c: 59: LATCbits.LATC5 = 1;
-"59
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;interrupts.c: 60: LATCbits.LATC5 = 0;
-"60
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-"62
+[e = _multiplexer_counter -> -> 0 `i `ui ]
+"56
 }
 [e :U 327 ]
-"63
+[; ;interrupts.c: 56: }
+[; ;interrupts.c: 59: if(next_frame_counter >= 200)
+"59
+[e $ ! >= _next_frame_counter -> -> 200 `i `ui 328  ]
+[; ;interrupts.c: 60: {
+"60
+{
+[; ;interrupts.c: 62: next_frame_counter = 0;
+"62
+[e = _next_frame_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 67: var++;
+"67
+[e ++ _var -> -> 1 `i `uc ]
+"70
+}
+[e :U 328 ]
+"71
 }
 [e :U 326 ]
-"66
+"74
 }
 [e :U 325 ]
-[; ;interrupts.c: 62: }
-[; ;interrupts.c: 63: }
-[; ;interrupts.c: 66: }
-[; ;interrupts.c: 90: }
-"90
+[; ;interrupts.c: 70: }
+[; ;interrupts.c: 71: }
+[; ;interrupts.c: 74: }
+[; ;interrupts.c: 98: }
+"98
 [e :UE 324 ]
 }

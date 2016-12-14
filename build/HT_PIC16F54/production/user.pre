@@ -3697,6 +3697,6 @@ SSP1CON1bits.SSPM = 0b0000;
 INTCONbits.GIE = 0b1;
 INTCONbits.TMR0IE = 0b1;
 INTCONbits.PEIE = 0b1;
-PIE1bits.SSP1IE = 0b1;
+
 }
 

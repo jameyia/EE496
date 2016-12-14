@@ -74,7 +74,7 @@ void InitApp(void)
     
     SSP1CON1bits.SSPEN = 0b1; // Enable MSSP
     SSP1CON1bits.CKP = 0b0; // low level is idle state for clock
-    SSP1CON1bits.SSPM = 0b0000; // Clcok is Fosc/4 = 8MHz
+    SSP1CON1bits.SSPM = 0b0000; // SPI Master Mode; Clock is Fosc/4 = 8MHz
     
     
 
@@ -82,6 +82,6 @@ void InitApp(void)
     INTCONbits.GIE = 0b1; // Enable interrupts
     INTCONbits.TMR0IE = 0b1; // Enable Timer 0 interrupt
     INTCONbits.PEIE = 0b1; // Enable Peripheral interrupt bits
-    PIE1bits.SSP1IE = 0b1; // Enable MSSP
+    //PIE1bits.SSP1IE = 0b1; // Enable MSSP
 }
 

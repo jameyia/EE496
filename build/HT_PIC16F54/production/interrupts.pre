@@ -3637,11 +3637,13 @@ void InitApp(void);
 extern unsigned char var;
 extern unsigned int multiplexed_counter;
 extern unsigned int next_frame_counter;
+extern unsigned short long current_frame;
+extern unsigned int multiplexer_counter;
 
 void interrupt isr(void)
 {
 
-# 36
+# 38
 if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
 {
 INTCONbits.TMR0IF = 0;
@@ -3657,23 +3659,29 @@ next_frame_counter++;
 
 
 
-if(next_frame_counter >= 3200)
+if(multiplexer_counter > 2)
+{
+multiplexer_counter = 0;
+}
+
+
+if(next_frame_counter >= 200)
 {
 
 next_frame_counter = 0;
+
+
+
+
 var++;
 
 
-SSP1BUF = var;
-LATCbits.LATC5 = 1;
-LATCbits.LATC5 = 0;
-
 }
 }
 
 
 }
 
-# 90
+# 98
 }
 

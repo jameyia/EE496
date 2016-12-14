@@ -5,7 +5,7 @@
 /* TODO Application specific user parameters used in user.c may go here */
 
 #define MULTIPLEX_LEDS 10
-#define NEXT_FRAME 3200 // (normall 200)
+#define NEXT_FRAME 200 // (normall 200 for 1/16, 3200 for 1 sec)
 
 /******************************************************************************/
 /* User Function Prototypes                                                   */

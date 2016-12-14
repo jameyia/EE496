@@ -23,6 +23,8 @@
 unsigned int multiplexed_counter = 0;
 unsigned int next_frame_counter = 0;
 unsigned char var = 0x00;
+unsigned short long current_frame = 0x000000;
+unsigned int multiplexer_counter = 0;
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -34,19 +36,42 @@ void main(void)
 
     /* Initialize I/O and Peripherals for application */
     InitApp();
+    _delay(100);
     
     
     
+    SSP1BUF = 0b11110000;
+    while(SSP1STATbits.BF == 0);
+    LATCbits.LATC5 = 1;
+    LATCbits.LATC5 = 0;
+    var = SSP1BUF;
+    
+    
+    SSP1BUF = 0b10101010;
+    while(SSP1STATbits.BF == 0)
+    _delay(100);
+    LATCbits.LATC5 = 1;
+    LATCbits.LATC5 = 0;
+    /*
+    while(SSP1STATbits.BF == 0);
+    var = SSP1BUF;
+        SSP1BUF = 0b01010101;
+    while(SSP1STATbits.BF == 0);
+    var = SSP1BUF;
+        LATCbits.LATC5 = 1;
+        LATCbits.LATC5 = 0;
+    */
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
         
-        //LATC = var;
+        
         /*
-        SSP1BUF = var;
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC5 = 0;
-         * */
+        LATCbits.LATC4 = 1;
+        _delay(1000000);
+        LATCbits.LATC4 = 0;
+        _delay(1000000);
+        */
     }
 
 }
